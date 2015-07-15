@@ -1,5 +1,5 @@
 body {
-    font-family:Symbol
+     font-family: "Times New Roman", Times, serif;
 }
 
 .tabs {
@@ -8,6 +8,7 @@ body {
     margin-bottom:0;
     position:relative;
     bottom:-.29em
+   
 }
 
 .tab-links li {
@@ -38,7 +39,8 @@ body {
     height:350px;
     width:1020px;
     border-radius:6px;
-    background:#ADD8E6
+    background:#ADD8E6;
+
 }
 
 .box {
@@ -60,14 +62,30 @@ body {
     height:35px;
     background-color:green;
     color:#fff;
-    top:360px;
+    top:338px;
     left:210px;
     border-radius:3px;
+    text-align:center;
+    line-height:2em;
+}
+.p3
+{
+	color:blue;
+
+}
+.learnmore a
+{
+margin:5px;
+text-decoration:none;
+color:white;
+
 }
 
-.text {
-    margin:10px
+.description
+{
+color:gray;
 }
+
 
 .cont {
     margin-left:30px
