@@ -155,7 +155,7 @@ td.address {
     margin-left:22px;
     width:325px;
     height:36px;
-    margin-top:-17px;
+    margin-top:-15px;
 }
 
 .radio {
