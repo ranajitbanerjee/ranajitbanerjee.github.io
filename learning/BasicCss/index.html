@@ -3,18 +3,19 @@
 <head>
 	<title>Basic css assignment</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="script.js"></script>
 </head>
 
 <body>
     <div>
         <div class="tabs">
             <ul class="tab-links">
-                <li class="active">
-                    <a href="#tab1">News</a>
+                <li class="active" id="active">
+                    <a href="#tab1" onclick="show('tab1')" id="tab1">News</a>
                 </li>
 
-                <li>
-                    <a href="#tab2">Subscribe</a>
+                <li class="tab2">
+                    <a href="#tab2" onclick="show('tab2')" id="tab2">Subscribe</a>
                 </li>
             </ul>
         </div>
@@ -24,20 +25,51 @@
                 <div class="cont">
                     <h1>Welcome</h1>
 
-                    <p class="description">Simple and effective angularjs binding for fusioncharts scripting library.Simple and effective
-                    angularjs binding for fusioncharts scripting library.</p>
+                    <p class="description">Simple and Effective Angularjs Bindings for Fusioncharts Javascript Charting library.Simple and 		            Effective Angularjs Bindings for Fusioncharts Javascript Charting library.</p>
 
-                    <p class="p3">AngularJs Binding for fusioncharts scripting library</p>
+                    <p class="p3">AngularJs Binding for Fusioncharts Javascript Charting Library</p>
                 </div>
             </div>
-
+           
             <div class="box">
                 <div class="cont">
-                <h2>Latest News</h2><img alt="Tim cook image" height="200px" src="image.jpg" width="350px"></div>
+                <h1>Latest News</h1><img alt="Tim cook image" height="210px" src="image.jpg" width="370px">
+		</div>
 
-                <h4 class="learnmore"><a href="#learnmore">LEARN MORE</a></h4>
+                
             </div>
-        </div>
+		 <h4 class="learnmore"><a href="#learnmore">LEARN MORE</a></h4>
+            </div>
+
+	<div id="subscribe" >
+		<div class="form" id="form1">
+		
+	 	<h2>Subscription Form</h2>
+		     <form id="form1">
+			<table id="formtable">
+				<tr> 
+					<td width="50%">Name  
+					<input class="textbox" type="text" name="name" width="40" id="name"/> </td>
+					<td colspan="2">Country  
+					<select id="country"><option>India</option> <option> China</option> </td> 
+					</tr>
+				<tr>
+					<td class="email">E-mail  <input class="textbox" type="text" name="email" id="email"/>
+					<div class="sex">Sex  <input type="radio" class="radio" name="sex" checked id="sex" 						value="Male">Male</input> 
+		        		<input type="radio" class="radio" name="sex" id="sex" value="Female">Female</input> </div></td>
+					<td class="address"  ><p >Address </p> </td><td><textarea id="textarea" rows="10" 						cols="30"></textarea></td> 
+				</tr>
+				<tr> 
+					<td> Interest  <input type="checkbox" name="football" class="checkbox" id="interest" 						value="Football">Football</input>
+		            		<input type="checkbox" name="football" class="checkbox" id="interest" value="Movies">Movies</input>
+			    		<input type="checkbox" name="football" class="checkbox" id="interest" value="Reading">Reading</input> 						</td>
+				</tr>
+			</table>		
+			<button type="button" id="subscribebutton" onclick="json()">SUBSCRIBE</button>
+			<button type="reset" id="resetbutton">RESET</button>
+		    </form>
+		</div>			
+	</div>	
     </div>
 </body>
 </html>
