@@ -21,7 +21,6 @@ body {
     border-right:1px solid #bdcdee;
     z-index:1
 }
-
 .active {
     background:#e4efff;
     color:#fff
@@ -91,9 +90,14 @@ body {
 .learnmore a {
     margin:5px;
     color:#fff;
-    text-decoration:none
-}
+    text-decoration:none;
+    cursor:pointer;
 
+}
+.learnmore:hover
+{
+ background-color:green;
+}
 .description {
     font-size:13.81px;
     color:#6e6e6e;
@@ -134,11 +138,10 @@ td.address {
     background-color:#56A201;
     border-radius:3px;
     position:absolute;
-    top:309px;
-    left:770px;
     color:#fff;
-    font-size:15px;
-    font-weight:700
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
 }
 
 #subscribebutton {
@@ -155,7 +158,7 @@ td.address {
     margin-left:22px;
     width:325px;
     height:36px;
-    margin-top:-15px;
+    margin-top:-17px;
 }
 
 .radio {
