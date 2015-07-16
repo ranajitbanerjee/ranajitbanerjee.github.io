@@ -28,35 +28,41 @@ function show(x)
     }
     function json()
 	{
-	var sex,interest="";
-	var a=document.getElementById("name").value;
-    	var b=document.getElementById("email").value;
-    	var c = document.getElementsByName('sex');
-	for (var i =c.length; i--;) {
-   	if (c[i].checked) {
-        sex= c[i].value;
-        break;
-    }
-}
-   	var inputElements = document.getElementsByClassName('checkbox');
-	for(var i=0; inputElements[i]; ++i)
-		{
-	      	   if(inputElements[i].checked)
-		   {
+					var interest="";
+								var name=document.form1.name.value;
+								var email=document.form1.email.value;
+								var sex=document.form1.sex.value;
+
+                                var inputElements = document.getElementsByClassName('checkbox');
+									for(var i=0; inputElements[i]; ++i)
+										{
+	      	   								if(inputElements[i].checked)
+		   										{
 		  
-	           interest= interest+inputElements[i].value+" ";
-	           
-		   }
-		}
-    var e=document.getElementById('country').value;
-    var f=document.getElementById('textarea').value;
-    console.log("{");
-    console.log('"name":"'+a+'",');
-    console.log('"email":"'+b+'",');
-    console.log('"sex":"'+sex+'",');
-    console.log('"interest":"'+interest+'",');
-    console.log('"country":"'+e+'",');
-    console.log('"address":"'+f+'"');
-    console.log("}");
+	           										interest= interest+inputElements[i].value+" ";
+	           										//console.log(interest);		
+
+	           									}
+										}
+										
+
+
+								
+								var country=document.form1.country.value;
+								var address=document.form1.textarea.value;
+								var object=[];
+								var array=[];
+								object.name=name;
+								object.email=email;
+								object.sex=sex;
+								object.country=country;
+								object.address=address;
+								object.arr=interest;
+							    JSON.stringify(object);
+
+
+
+							console.log(object);
+
 	
 	}
