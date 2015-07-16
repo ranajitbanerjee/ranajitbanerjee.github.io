@@ -50,19 +50,19 @@ function show(x)
 								
 								var country=document.form1.country.value;
 								var address=document.form1.textarea.value;
-								var object=[];
-								var array=[];
+								var object={};
+								
 								object.name=name;
 								object.email=email;
 								object.sex=sex;
 								object.country=country;
 								object.address=address;
-								object.arr=interest;
+								object.interest=interest;
+							
+							
 							    JSON.stringify(object);
-
-
-
-							console.log(object);
+						console.log(object);
+						
 
 	
 	}
