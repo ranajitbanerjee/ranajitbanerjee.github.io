@@ -2,6 +2,14 @@ body {
     font-family:"Open Sans SemiBold"
 }
 
+.wrapper
+{
+
+margin-left:100px;
+margin-top:80px;
+
+}
+
 .tabs {
     width:100%;
     display:inline-block;
@@ -176,7 +184,8 @@ background-color:green;
     width:320px;
     height:90px;
     background-color:#F3F3F3;
-    border:2px solid #EDEDED
+    border:2px solid #EDEDED;
+    border-radius:2px;
 }
 
 .checkbox {
