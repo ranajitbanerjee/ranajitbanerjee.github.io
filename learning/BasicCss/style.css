@@ -158,10 +158,13 @@ td.address {
 background-color:green;
 }
 #country {
-    margin-left:22px;
-    width:325px;
-    height:36px;
-    margin-top:-17px;
+  margin-left: 22px;
+  width: 329px;
+  height: 36px;
+  margin-top: -17px;
+  border-radius: 2px;
+  background-color: #F3F3F3;
+  border: 2px solid #EDEDED;
 }
 
 .radio {
@@ -199,6 +202,7 @@ input[type='text'] {
     background-color:#F3F3F3;
     border:2px solid #EDEDED;
     text-align:left;
+     border-radius:2px;
 }
 
 .form form {
@@ -206,6 +210,7 @@ input[type='text'] {
     margin-top:0;
     color:#6e6e6e;
     font-weight:4pt;
+   
 }
 
 div.sex {
@@ -214,8 +219,8 @@ div.sex {
 
 #formtable {
     padding-left: 20px;
-  width: 850px;
-  height: 200px;
+  width: 860px;
+  height: 201px;
   font-weight: 500;
   font-family: Open Sans Light;
 }

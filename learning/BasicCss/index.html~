@@ -46,7 +46,7 @@
 		
 	 	<h2>Subscription Form</h2>
 		     <form id="form1" name="form1">
-			<table id="formtable">
+			<table id="formtable" border="1px solid black">
 				<tr> 
 					<td width="50%">Name  
 					<input class="textbox" type="text" name="name" id="name"/> </td>
