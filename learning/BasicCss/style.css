@@ -176,7 +176,8 @@ background-color:green;
     width:320px;
     height:90px;
     background-color:#F3F3F3;
-    border:2px solid #EDEDED
+    border:2px solid #EDEDED;
+    border-radius:2px;
 }
 
 .checkbox {
