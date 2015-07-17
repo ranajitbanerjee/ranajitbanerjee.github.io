@@ -2,20 +2,12 @@ body {
     font-family:"Open Sans SemiBold"
 }
 
-.wrapper
-{
-
-margin-left:100px;
-margin-top:70px;
-
-}
-
 .tabs {
     width:100%;
     display:inline-block;
     margin-bottom:0;
     position:relative;
-    bottom:-.29em;
+   bottom:-.29em;
     left:15px
 }
 
@@ -29,6 +21,7 @@ margin-top:70px;
     border-right:1px solid #bdcdee;
     z-index:1
 }
+
 .active {
     background:#e4efff;
     color:#fff
@@ -44,7 +37,7 @@ margin-top:70px;
     color:#6e6e6e
 }
 
-.content,#subscribe {
+.content,#subscribe,.model{
     position:absolute;
     margin:0 30px 30px;
     border:1px solid #bdcdee;
@@ -54,7 +47,44 @@ margin-top:70px;
     background:#e4efff;
     z-index:-1
 }
+.selectinterest
+{
+   
+    position: absolute;
+  top: 20%;
+  left: 35%;
+  width: 94px;
+    visibility:hidden;
+    
+    
+}
 
+.innerdiv1Inside {
+    position:relative;
+    float:left
+}
+
+#innerleft {
+    margin-right:10px
+}
+
+#innerright {
+    margin-left:10px;
+    padding-top:65px
+}
+#state
+{
+	width:200px;
+	top:100px;
+}
+.model
+{
+  opacity: .8;
+  z-index: 10;
+  visibility: hidden;
+   color:#878787;
+  
+}
 #subscribe {
     visibility:hidden;
     background:#E4F0FF
@@ -98,19 +128,14 @@ margin-top:70px;
 .learnmore a {
     margin:5px;
     color:#fff;
-    text-decoration:none;
-    cursor:pointer;
+    text-decoration:none
+}
 
-}
-.learnmore:hover
-{
- background-color:green;
-}
 .description {
     font-size:13.81px;
     color:#6e6e6e;
-    line-height:1.65;
-    padding-right:61px
+    line-height:1.5;
+    padding-right:55px
 }
 
 .cont {
@@ -134,9 +159,11 @@ margin-top:70px;
     margin-left:25px
 }
 
-td.address {
-    vertical-align:top;
-    width:65px
+#address
+{
+	width:250px;
+	height:80px;
+	margin-left:12px;
 }
 
 #subscribebutton,#resetbutton {
@@ -146,10 +173,11 @@ td.address {
     background-color:#56A201;
     border-radius:3px;
     position:absolute;
+    top:309px;
+    left:770px;
     color:#fff;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
+    font-size:15px;
+    font-weight:700
 }
 
 #subscribebutton {
@@ -161,18 +189,14 @@ td.address {
     top:305px;
     left:650px
 }
-#subscribebutton:hover,#resetbutton:hover
-{
-background-color:green;
-}
-#country {
-  margin-left: 22px;
-  width: 329px;
-  height: 36px;
-  margin-top: -17px;
-  border-radius: 2px;
-  background-color: #F3F3F3;
-  border: 2px solid #EDEDED;
+
+#country,#state{
+    width:270px;
+    height:35px;
+    margin-left:10px;
+    background-color:#F3F3F3;
+    border:1px solid #D6D6C2;
+    border-radius: 3px;
 }
 
 .radio {
@@ -184,8 +208,7 @@ background-color:green;
     width:320px;
     height:90px;
     background-color:#F3F3F3;
-    border:2px solid #EDEDED;
-    border-radius:2px;
+    border:2px solid #EDEDED
 }
 
 .checkbox {
@@ -211,7 +234,6 @@ input[type='text'] {
     background-color:#F3F3F3;
     border:2px solid #EDEDED;
     text-align:left;
-     border-radius:2px;
 }
 
 .form form {
@@ -219,7 +241,6 @@ input[type='text'] {
     margin-top:0;
     color:#6e6e6e;
     font-weight:4pt;
-   
 }
 
 div.sex {
@@ -228,9 +249,12 @@ div.sex {
 
 #formtable {
     padding-left: 20px;
-  width: 860px;
-  height: 201px;
+  width: 850px;
+  height: 200px;
   font-weight: 500;
   font-family: Open Sans Light;
 }
+#mobileno
+{
+	margin-left:0px;
 }
