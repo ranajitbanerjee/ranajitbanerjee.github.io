@@ -1,0 +1,321 @@
+
+body {
+    height:100%;
+    margin:0;
+    
+}
+.sidebar {
+    position:fixed;
+    width:30%;
+    height:100vh;
+    float:left;
+    background-image:url(../../images/bg.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:left top
+}
+#twitter,#facebook,#google,#linkedin
+{
+    background-image:url(../../images/twitter1.png);
+    height:20px;
+    width:20px;
+    background-size: cover;
+    float:left;
+    margin-right: 10px;
+
+}
+#twitter:hover
+{
+  background-image: url(../../images/twitter1hover.png);
+}
+
+#facebook
+{
+  background-image: url(../../images/facebook.png);
+}
+#facebook:hover
+{
+  background-image: url(../../images/facebookhover.png);
+}
+#linkedin
+{
+  background-image: url(../../images/linkedin.png);
+}
+#linkedin:hover
+{
+  background-image: url(../../images/linkedinhover.png);
+}
+#google
+{
+  background-image: url(../../images/google.png);
+}
+#google:hover
+{
+  background-image: url(../../images/googlehover.png);
+}
+
+.name
+{
+  color:#FFFFFF;
+  margin-bottom: 0px;
+}
+.info
+{
+  margin: 0px;
+  color:white;
+}
+.innerdiv {
+    width:900px;
+    height:100vh;
+    position:absolute;
+    left:450px;
+    top:51px
+}
+
+.project {
+    float:left;
+    width:406px;
+    margin-right:18px;
+    margin-bottom:21px
+}
+
+.picture {
+    width:390px;
+    height:240px
+}
+
+a.picture {
+    display:block
+}
+
+h5
+{
+  font-size: 18px; 
+    margin-top:10px;
+    margin-bottom: 3px;
+}
+
+.text,.description {
+    color:#ABABAB;
+}
+
+hr {
+    border-color:#EFEFEF;
+    border-width:1px;
+    margin-top:62px;
+    margin-right:100px
+}
+
+.button {
+    margin-top:12px;
+    background:#fff;
+    width:118px;
+    height:42px;
+    border:2.96px solid #ECECEC;
+    border-radius:3px;
+    color:grey;
+    font-size:13px;
+    font-weight:400
+}
+
+#bt {
+    border:2px solid grey
+}
+
+h4 {
+    font-family:OpenSans SemiBold;
+    font-size:20px;
+    font-weight:700;
+    width:379px
+}
+
+.mainpage {
+    width:100%;
+    height:100vh;
+    margin:0;
+    float:left
+}
+
+.description {
+    width:634px;
+    text-align:left
+}
+
+.profileinfo {
+    position:absolute;
+    top:100px;
+    font-size:17px;
+    left:20px;
+    text-align:right
+}
+
+.im {
+    border-radius:50px;
+    width:100px;
+    height:100px;
+    float:right
+}
+
+
+
+.des {
+    top:36px;
+    position:absolute;
+    width:203px;
+    height:300px;
+    left:169px
+}
+
+form {
+    width:500px;
+    float:left
+}
+
+.contacticons {
+    width:20px;
+    height:100px;
+    float:left;
+    margin-left:50px
+}
+
+.contacticons img {
+    width:20px;
+    height:20px;
+       margin-bottom: 54px;
+}
+
+.contactinfo {
+    float:left;
+    height:100px;
+    width:193px;
+    margin-left:17px
+}
+
+.contactinfo p {
+    margin-bottom:47px;
+    font-size:15px
+}
+
+.address {
+    margin-top:0
+}
+
+.emailicon {
+        margin-top: -13px;
+      }
+
+form * {
+    margin-bottom:21px;
+    margin-right:7px;
+    width:47%;
+    height:34px;
+    border:1px solid #FBFBFB;
+    border-radius:3px;
+    background-color:#F7F7F7
+}
+
+textarea {
+    width:479px;
+    height:121px
+}
+.abc
+{
+  position: absolute;
+  top: 575px;
+  width: 200px;
+  height: 50px;
+ left: 205px;
+}
+
+.footer {
+  position: absolute;
+    top: 550px;
+    left: 242px;
+  
+}
+#copyright
+{
+ float: left;
+ width:10px;
+  height:10px;
+  margin-right: 0px;
+
+}
+.footernote
+{
+     position: absolute;
+    font-size: 11px;
+    left: 13px;
+    margin: 0px;
+    color: white;
+}
+#modal {
+    position:fixed;
+    z-index:1000;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    opacity:5;
+    visibility:hidden;
+    margin:0 auto
+}
+
+#box {
+    width:632px;
+    margin:150px auto;
+    border-radius:5px;
+    height:340px;
+
+}
+
+#innerbox {
+    width:629px;
+    height:273px;
+    border:2px solid #000;
+    border-radius: 5px;
+}
+
+.smalltext {
+    width:629px;
+    height:39px;
+    position:absolute;
+    top:424px;
+    background:#fff;
+    margin-left:2px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+      border-radius: 5px;
+}
+
+.closebutton {
+    width:50px;
+    height:50px;
+    
+    float:right;
+    cursor:pointer;
+}
+
+.rightbutton {
+    position:absolute;
+    width:40px;
+    height:40px;
+    float:right;
+    left:951px;
+    top:289px
+}
+.leftbutton {
+    width:40px;
+    height:40px;
+    margin-top:139px
+}
+.closebutton:hover,.rightbutton:hover,.leftbutton:hover
+{
+  background: #fff;
+}
+
+h1
+{
+      width: 534px;
+    font-size: 25px;
+}
