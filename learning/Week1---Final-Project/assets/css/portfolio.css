@@ -179,7 +179,8 @@ form {
     width:20px;
     height:100px;
     float:left;
-    margin-left:7px
+    margin-left:7px;
+    
 }
 
 .contacticons img {
@@ -192,7 +193,8 @@ form {
     float:left;
     height:100px;
     width:193px;
-    margin-left:17px
+    margin-left:17px;
+    color:#7C7C7C;
 }
 
 .contactinfo p {
