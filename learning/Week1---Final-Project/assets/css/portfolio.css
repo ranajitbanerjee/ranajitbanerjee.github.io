@@ -81,7 +81,8 @@ body {
 
 .picture {
     width:390px;
-    height:240px
+    height:240px;
+    cursor:pointer;
 }
 
 a.picture {
