@@ -74,13 +74,13 @@ body {
 
 .project {
     float:left;
-    width:406px;
+    width:380px;
     margin-right:18px;
     margin-bottom:21px
 }
 
 .picture {
-    width:390px;
+    width:358px;
     height:240px;
     cursor:pointer;
 }
