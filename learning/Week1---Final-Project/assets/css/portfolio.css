@@ -92,9 +92,10 @@ a.picture {
 
 h5
 {
-  font-size: 18px; 
+   font-size: 18px; 
     margin-top:10px;
     margin-bottom: 3px;
+    color: #7c7c7c;
 }
 
 .text,.description {
@@ -320,4 +321,5 @@ h1
 {
       width: 534px;
     font-size: 25px;
+    color: #7c7c7c;
 }
