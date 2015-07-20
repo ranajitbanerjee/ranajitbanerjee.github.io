@@ -141,7 +141,8 @@ h4 {
 
 .description {
     width:634px;
-    text-align:left
+    text-align:left;
+    font-size: 15px;
 }
 
 .profileinfo {
