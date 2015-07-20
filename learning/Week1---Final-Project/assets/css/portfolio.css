@@ -126,10 +126,10 @@ hr {
 }
 
 h4 {
-    font-family:OpenSans SemiBold;
     font-size:20px;
     font-weight:700;
-    width:379px
+    width:379px;
+    color: #7C7C7C;
 }
 
 .mainpage {
