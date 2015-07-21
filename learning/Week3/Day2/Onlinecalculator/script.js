@@ -1,5 +1,5 @@
 
-var storednumber='',lastnumber,lastoperator,lastresult;
+var storednumber='',lastnumber,lastoperator,flag=false;
 
 var c=0,firstnum;
 function display(input)
@@ -7,8 +7,14 @@ function display(input)
 		
  	var inputbox=document.getElementById('input');
 	var inputvalue=inputbox.value+input;
-	if(inputvalue[length-1]='.')
-		inputbox.value=inputvalue;
+	if(flag==true)
+	{
+		
+		cleardisplay();
+		inputbox.value=input;
+	}
+	else
+    inputbox.value=inputvalue;
 
 }
 
@@ -31,6 +37,7 @@ function cleardisplay()
 {
 	var inputbox=document.getElementById('input');
 	inputbox.value='';
+	flag=false;
 }
 
 function  backspace()
@@ -75,8 +82,9 @@ function calculate()
 					
 				    inputbox.value=Number(firstnum)%Number(inputvalue.substring(firstnum.length+1));
 				}
-			
+
 				c=0;
+		    flag=true;
 			memorystore();
 
 }
