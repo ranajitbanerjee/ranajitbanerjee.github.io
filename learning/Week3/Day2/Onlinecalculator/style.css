@@ -1,0 +1,61 @@
+
+	.maindiv
+ {
+  margin: 200px 250px 250px 350px;
+  border: 10px solid burlywood;
+  height: 261px;
+  width: 468px;
+  padding: 10px 10px 10px 10px;
+  background-color: cornflowerblue;
+  border-radius: 8px;
+}
+
+input[type="text"]
+ {
+   float: right;
+  width: 463px;
+  height: 52px;
+  font-size: 31px;
+   text-align: right;
+}
+.numbers
+{
+  width: 66px;
+  float: left;
+  height: 51px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  font-size: 22px;
+  background-color: crimson;
+
+}
+.numberdiv
+{
+  width: 199px;
+  height: 100px;
+  float: left;
+  margin-top: 5px;
+}
+.operations
+
+{
+  width: 268px;
+  height: 160px;
+  float: left;
+  margin-top: 5px;
+
+}
+
+.operators
+{
+  width: 66px;
+  height: 51px;
+  float: left;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: darkcyan;
+}
+
