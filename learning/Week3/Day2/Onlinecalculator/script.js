@@ -14,8 +14,14 @@ function display(input)
 		inputbox.value=input;
 	}
 	else
-    inputbox.value=inputvalue;
-
+	{
+    
+    	if(inputbox.value[inputbox.value.length-1]=='.'&&input=='.')
+    	{} //dont set inputbox value when decimal is already in the inputbox
+   		 else
+   		 inputbox.value=inputvalue;
+	
+	}
 }
 
 function displayoperator(operator)
@@ -84,7 +90,7 @@ function calculate()
 				}
 
 				c=0;
-		    flag=true;
+		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY 
 			memorystore();
 
 }
