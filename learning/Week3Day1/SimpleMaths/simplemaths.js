@@ -68,20 +68,9 @@ function check(input)
 {
 
     //setting cursor position
-    if (input.createTextRange) 
-    {
-        var part = input.createTextRange();
-        part.move("character", 1);
-        part.select();
-    } 
-    else if (input.setSelectionRange) 
-    {
+ 
         input.setSelectionRange(0, 0);
-    }
-    input.focus();
-   
-    //seting cursor position ends here
-    
+ 
     var id = input.id;
     
     //set background color green when result matches with input else red and if result is blank then set white	
