@@ -106,7 +106,7 @@ function calculate()
 				c=0;
 
 		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY 
-			memorystore();
+		
 
 }
 
