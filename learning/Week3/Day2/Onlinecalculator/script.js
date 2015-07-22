@@ -14,8 +14,10 @@ function display(input)
 	}
 	else
 	{
-    
-    	if(inputvalue.lastIndexOf('.')>=0&&input=='.')
+    var index=inputbox.value.indexOf(lastoperator);
+    var string=inputbox.value.substring(0,index);
+    var decimalexists=string.search('.');
+    	if(inputvalue.lastIndexOf('.')>=0&&input=='.'&&decimalexists==-1)
     	{ } //dont set inputbox value when decimal is already in the inputbox
    		 else
    		 inputbox.value=inputvalue+input;
@@ -41,12 +43,16 @@ function displayoperator(operator)
 	    }
 	    if (inputbox.value.length != 1)
 	    {
-	        c = 1;
-			if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
-			{
-			 inputbox.value=inputbox.value+val;	
+	      c = 1;
 			
+			if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
+			
+			{
+
+			 inputbox.value=inputbox.value+val;	
+			 
 			}    
+				    
 	    
 	    }
 	}
@@ -82,27 +88,27 @@ function calculate()
 			if(lastoperator=='+')
 				{
 					
-				    inputbox.value=Number(firstnum)+Number(value);
+				    inputbox.value=parseFloat(firstnum)+parseFloat(value);
 				}
 		if(lastoperator=='-')
 				{
 					
-				    inputbox.value=Number(firstnum)-Number(value);
+				    inputbox.value=parseFloat(firstnum)-parseFloat(value);
 				}
 			if(lastoperator=='*')
 				{
 					
-				    inputbox.value=Number(firstnum)*Number(value);
+				    inputbox.value=parseFloat(firstnum)*parseFloat(value);
 				}
 		if(lastoperator=='/')
 				{
 					
-				    inputbox.value=Number(firstnum)/Number(value);
+				    inputbox.value=parseFloat(firstnum)/parseFloat(value);
 				}
 		if(lastoperator=='mod')
 				{
 					
-				    inputbox.value=Number(firstnum)%Number(value);
+				    inputbox.value=parseFloat(firstnum)%parseFloat(value);
 				}
 			if(lastoperator=='%')
 			{
@@ -122,19 +128,19 @@ function calculate()
 				
 				if(value=='+')
 				{
-				inputbox.value=Number(firstnumber)+(Number(secondnumber)/100)*Number(firstnumber);
+				inputbox.value=parseFloat(firstnumber)+(parseFloat(secondnumber)/100)*parseFloat(firstnumber);
 				}
 					if(value=='-')
 				{
-				inputbox.value=Number(firstnumber)-(Number(secondnumber)/100)*Number(firstnumber);
+				inputbox.value=parseFloat(firstnumber)-(parseFloat(secondnumber)/100)*parseFloat(firstnumber);
 				}
 					if(value=='*')
 				{
-				inputbox.value=Number(firstnumber)*(Number(secondnumber)/100);
+				inputbox.value=parseFloat(firstnumber)*(parseFloat(secondnumber)/100);
 				}
 					if(value=='/')
 				{
-				inputbox.value=Number(firstnumber)/(Number(secondnumber)/100);
+				inputbox.value=parseFloat(firstnumber)/(parseFloat(secondnumber)/100);
 				}
 				
 			}
@@ -148,7 +154,7 @@ function memorystore()
 {
 
    var inputbox=document.getElementById('input');
-	storednumber=Number(inputbox.value);
+	storednumber=parseFloat(inputbox.value);
 
 }
 
@@ -167,13 +173,13 @@ function memoryadd()
 {
 
 	var inputbox=document.getElementById('input');
-	inputbox.value=Number(inputbox.value)+Number(storednumber);
+	inputbox.value=parseFloat(inputbox.value)+parseFloat(storednumber);
 
 }
 function memoryminus()
 {
 	
 	var inputbox=document.getElementById('input');
-	inputbox.value=Number(storednumber)-Number(inputbox.value);
+	inputbox.value=parseFloat(storednumber)-parseFloat(inputbox.value);
 
 }
