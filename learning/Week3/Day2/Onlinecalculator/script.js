@@ -9,7 +9,6 @@ function display(input)
 	var inputvalue=inputbox.value;
 	if(flag==true)
 	{
-		
 		cleardisplay();
 		inputbox.value=input;
 	}
@@ -31,19 +30,27 @@ function displayoperator(operator)
 	lastoperator=operator;
 	if (inputbox.value.length != 0 || val =="-") 
     {
-	    if (c == 0) {
+	    if (c == 0) 
+	    {
+
 	        firstnum = inputbox.value;
+
 	        inputbox.value = inputbox.value + operator;
+	         if(operator=='%')
+	        	calculate();
 	    }
-	    if (inputbox.value.length != 1)
+	    if (inputbox.value.length != 1&&operator!='%')
 	        c = 1;
 	}
+	flag=false;
 }
 function cleardisplay()
 {
 	var inputbox=document.getElementById('input');
 	inputbox.value='';
 	flag=false;
+	c=0;
+
 }
 
 function  backspace()
@@ -63,33 +70,41 @@ function calculate()
 	var inputbox=document.getElementById('input');
 	var inputvalue=inputbox.value;
 	var arr=[],i;
+	var value=inputvalue.substring(firstnum.length+1);
 			if(lastoperator=='+')
 				{
 					
-				    inputbox.value=Number(firstnum)+Number(inputvalue.substring(firstnum.length+1));
+				    inputbox.value=Number(firstnum)+Number(value);
 				}
 		if(lastoperator=='-')
 				{
 					
-				    inputbox.value=Number(firstnum)-Number(inputvalue.substring(firstnum.length+1));
+				    inputbox.value=Number(firstnum)-Number(value);
 				}
 			if(lastoperator=='*')
 				{
 					
-				    inputbox.value=Number(firstnum)*Number(inputvalue.substring(firstnum.length+1));
+				    inputbox.value=Number(firstnum)*Number(value);
 				}
 		if(lastoperator=='/')
 				{
 					
-				    inputbox.value=Number(firstnum)/Number(inputvalue.substring(firstnum.length+1));
+				    inputbox.value=Number(firstnum)/Number(value);
 				}
 		if(lastoperator=='mod')
 				{
 					
-				    inputbox.value=Number(firstnum)%Number(inputvalue.substring(firstnum.length+1));
+				    inputbox.value=Number(firstnum)%Number(value);
 				}
-
+			if(lastoperator=='%')
+			{
+				//var number=Number(inputvalue.substring(firstnum.length+1,inputvalue.length-1));
+				//alert(number);
+				inputbox.value=firstnum/100;
+				
+			}
 				c=0;
+
 		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY 
 			memorystore();
 
