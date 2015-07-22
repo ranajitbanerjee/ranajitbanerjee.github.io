@@ -22,6 +22,7 @@
 						<button type="button" class="numbers" onclick="display('9')">9</button>
 						<button type="button" class="numbers" onclick="display('0')">0</button>
 						<button type="button" class="numbers" onclick="display('.')">.</button>
+						<button type="button" class="operators" onclick="memoryadd()">M+</button>
 				
 				</div>
 				<div class="operations">
@@ -34,11 +35,12 @@
 						<button type="button" class="operators" onclick="memoryrecall()">MR</button>	
 						<button type="button" class="operators" onclick="memorystore()">MS</button>	
 						<button type="button" class="operators" onclick="displayoperator('%')">%</button>		
-						<button type="button" class="operators" onclick="calculate()">=</button>	
+						
+						<button type="button" class="operators" onclick="memoryminus()">M-</button>	
 						<button type="button" class="operators" onclick="displayoperator('mod')">mod</button>
 						<button type="button" class="operators" onclick="backspace()">CN</button>
-						<button type="button" class="operators" onclick="memoryadd()">M+</button>
-						<button type="button" class="operators" onclick="memoryminus()">M-</button>
+						
+						<button type="button" class="operators" onclick="calculate()" id="equalto">=</button>
 					
     			</div>
 		</div>
