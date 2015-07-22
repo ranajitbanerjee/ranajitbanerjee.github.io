@@ -129,3 +129,17 @@ function memorydelete()
 {
 storednumber='';
 }
+function memoryadd()
+{
+
+	var inputbox=document.getElementById('input');
+	inputbox.value=Number(inputbox.value)+Number(storednumber);
+
+}
+function memoryminus()
+{
+	
+	var inputbox=document.getElementById('input');
+	inputbox.value=Number(storednumber)-Number(inputbox.value);
+
+}
