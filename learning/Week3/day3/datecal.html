@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Calculator</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+   <div class="Date">
+   <h2>Date Difference</h2>
+	<input type="date" name="date1" id="date1">
+	<input type="date" name="date2"" id="date2">
+	<p id="datedifference"></p>
+	<button type="button" name="calculate" onclick="caldifferencedate()" >Get difference</button>
+	</div>	
+	
+	<h2>Time Difference</h2>
+	<div class="Time">
+	<input type="text" name="time" id="hour1" maxlength="2">
+	
+	<input type="text" name="time"" id="minute1">
+	<select name="amorpm" id="amorpm1"><option value="AM" >AM</option> <option value="PM">PM</option> </select>
+	<input type="text" name="time" id="hour2" maxlength="2">
+	
+	<input type="text" name="time" id="minute2">
+	<select name="amorpm" id="amorpm2"><option value="AM">AM</option> <option value="PM">PM</option> </select>
+	
+
+	<p id="timedifference"></p>
+
+	<button type="button" name="calculate" onclick="caltime()" >Get difference</button>
+	</div>
+  
+   <div class="interval">
+	<h2>Add Time Interval</h2>
+	<span>Enter Date</span>
+	<input type="date" name="date" id="date">
+	<span>Enter time</span>
+	<input type="text" name="hour" id="hour" maxlength="2" placeholder="Hrs">
+   <input type="text" name="minute" id="minute" maxlength="2" placeholder="Min">
+
+  	
+	<span>Set time interval</span>
+	<input type="text" name="timeinterval" id="timeintervalhour" placeholder="Hrs">
+	<input type="text" name="timeinterval" id="timeintervalminute" placeholder="Min">
+	  
+	<p id="timeresult2"></p>
+ 
+	<button type="button" name="calculate" onclick="nextdate()" >Add time interval</button>
+
+	</div>
+
+</body>
+
+</html>
