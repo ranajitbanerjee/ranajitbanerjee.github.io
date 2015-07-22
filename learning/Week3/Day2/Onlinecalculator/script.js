@@ -28,6 +28,7 @@ function displayoperator(operator)
    var val=operator;
 	var inputbox = document.getElementById("input");
 	lastoperator=operator;
+
 	if (inputbox.value.length != 0 || val =="-") 
     {
 	    if (c == 0) 
@@ -35,12 +36,19 @@ function displayoperator(operator)
 
 	        firstnum = inputbox.value;
 
-	        inputbox.value = inputbox.value + operator;
-	         if(operator=='%')
-	        	calculate();
+	        inputbox.value = inputbox.value + val;
+	        
 	    }
-	    if (inputbox.value.length != 1&&operator!='%')
+	    if (inputbox.value.length != 1)
+	    {
 	        c = 1;
+			if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
+			{
+			 inputbox.value=inputbox.value+val;	
+			 calculate();
+			}    
+	    
+	    }
 	}
 	flag=false;
 }
@@ -98,15 +106,41 @@ function calculate()
 				}
 			if(lastoperator=='%')
 			{
-				//var number=Number(inputvalue.substring(firstnum.length+1,inputvalue.length-1));
-				//alert(number);
+		
+			var value=inputbox.value[firstnum.length],firstnumber,secondnumber;
+			
+				if(value=='+'||value=='-'||value=='*'||value=='/')
+				{
+					firstnumber=inputbox.value.substring(0,firstnum.length);
+				
+					secondnumber=	inputbox.value.substring(firstnum.length+1,inputbox.value.length-1);		
+				
+					
+				}
+				else 
 				inputbox.value=firstnum/100;
+				
+				if(value=='+')
+				{
+				inputbox.value=Number(firstnumber)+(Number(secondnumber)/100)*Number(firstnumber);
+				}
+					if(value=='-')
+				{
+				inputbox.value=Number(firstnumber)-(Number(secondnumber)/100)*Number(firstnumber);
+				}
+					if(value=='*')
+				{
+				inputbox.value=Number(firstnumber)*(Number(secondnumber)/100);
+				}
+					if(value=='/')
+				{
+				inputbox.value=Number(firstnumber)/(Number(secondnumber)/100);
+				}
 				
 			}
 				c=0;
 
 		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY 
-		
 
 }
 
