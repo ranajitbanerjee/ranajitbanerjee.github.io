@@ -45,7 +45,7 @@ function displayoperator(operator)
 			if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
 			{
 			 inputbox.value=inputbox.value+val;	
-			 calculate();
+			
 			}    
 	    
 	    }
