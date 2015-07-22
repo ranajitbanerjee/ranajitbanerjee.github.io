@@ -6,7 +6,7 @@ function display(input)
 {
 		
  	var inputbox=document.getElementById('input');
-	var inputvalue=inputbox.value+input;
+	var inputvalue=inputbox.value;
 	if(flag==true)
 	{
 		
@@ -16,10 +16,10 @@ function display(input)
 	else
 	{
     
-    	if(inputbox.value[inputbox.value.length-1]=='.'&&input=='.')
-    	{} //dont set inputbox value when decimal is already in the inputbox
+    	if(inputvalue.lastIndexOf('.')>=0&&input=='.')
+    	{ } //dont set inputbox value when decimal is already in the inputbox
    		 else
-   		 inputbox.value=inputvalue;
+   		 inputbox.value=inputvalue+input;
 	
 	}
 }
