@@ -227,7 +227,7 @@ textarea {
 .abc
 {
   position: absolute;
-  top: 575px;
+  bottom:5px;
   width: 200px;
   height: 50px;
  left: 205px;
@@ -235,7 +235,7 @@ textarea {
 
 .footer {
   position: absolute;
-    top: 550px;
+   bottom:60px;
     left: 242px;
   
 }
