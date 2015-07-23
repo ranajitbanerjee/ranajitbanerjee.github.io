@@ -9,10 +9,12 @@ function caldifferencedate()
 	
 			var hours=ms/3600000;
 			var days=hours/24;
+			alert(days);
 			var datediff=document.getElementById('datedifference');
-			var years=Math.ceil(days/365);
-			var months=(days%365)/30;
-			datediff.innerHTML=days+" days ";
+			var years=Math.floor(days/365);
+			var months=Math.floor((days%365)/30);
+			days=(days%365)%30;
+			datediff.innerHTML=years+" years "+months+" months "+days+" days";
 			
 			
 			
