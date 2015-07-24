@@ -10,12 +10,12 @@ function calculateemi()
  var n=parseFloat(nom.value);
  var p=parseFloat(principal.value);
   var a=Math.pow(1+(r/1200),n);
-  var result;
+  var res;
   var b=a/(a-1);
  if(emi.value=='')
  {
   res=p*(r/1200)*b;
-   emi.value=result;
+   emi.value=res;
  }
  
  if(nom.value=='')
@@ -44,4 +44,6 @@ function calculateemi()
  
  
  }
+
+
 }
