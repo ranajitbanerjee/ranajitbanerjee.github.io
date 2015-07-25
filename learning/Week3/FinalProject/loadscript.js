@@ -13,7 +13,7 @@
 		var parentelement=document.getElementById(obj.parent);
 	   for(i=0;i<number;i++)
 	   {
-	   	element=document.createElement(obj.elem);
+	   	element=document.createElement(obj.tag);
 			for(j=2;j<Object.keys(obj).length;j++)
 			{			
 				var a=Object.keys(obj)[j];
@@ -47,17 +47,17 @@
 
   //CREATING THE RADIO BUTTONS
   				//creating a main div
-    	  	createcomponent({elem:'div',parent:'body',id:'main',className:'maindiv'});
+    	  	createcomponent({tag:'div',parent:'body',id:'main',className:'maindiv'});
 				//creating a RADIO DIV FOR RADIO BUTTONS
-  	  	   createcomponent({elem:'div',parent:'main',id:'radiobox',className:'radiodiv',
+  	  	   createcomponent({tag:'div',parent:'main',id:'radiobox',className:'radiodiv',
   	  	   style:{width:'374px',height:'100px'}});
 				//CREATING RADIO LABELS
-			createcomponent({elem:'label',parent:'radiobox',number:'3',
+			createcomponent({tag:'label',parent:'radiobox',number:'3',
 			innerHTML:['Basic Calculator','Date calculator','Mortgage Calculator'],
 			className:'labels',style:{   width:'300px' , marginRight :'10px' }    });
 
 			   //creating RADIO INPUT ELEMENTS
-			createcomponent({elem:'input',parent:'radiobox',number:'3',type:'radio',
+			createcomponent({tag:'input',parent:'radiobox',number:'3',type:'radio',
 			name:'options',id:['radio1','radio2','radio3'],className:'radioclass', style : { marginRight:'100px'  }
 			});
 			
@@ -69,7 +69,7 @@
   {
 			  	  
   	 		// CREATING  DIV FOR CALCULATOR
-  	  	   createcomponent({elem:'div',parent:'main',id:'calculatorbox',className:'caldiv',
+  	  	   createcomponent({tag:'div',parent:'main',id:'calculatorbox',className:'caldiv',
   			  	 style: { border: '10px solid burlywood',
   			height: '321px',
  			width: '500px',
@@ -78,7 +78,7 @@
   			borderRadius: '8px',
   			visibility:'hidden'} });	//Calculator div
 
-			 createcomponent({elem:'input',parent:'calculatorbox',id:'inputbox',type:'input',className:'inputdiv',
+			 createcomponent({tag:'input',parent:'calculatorbox',id:'inputbox',type:'input',className:'inputdiv',
   	  	   style:{
   		      float: 'right',
   				width: '498px',
@@ -88,7 +88,7 @@
 		}});
 	
 			//CREATING DIV FOR DISPLAYING NUMBERS  	  	   
-  	  	   createcomponent({elem:'div',parent:'calculatorbox',id:'numberbox',className:'numberdiv',
+  	  	   createcomponent({tag:'div',parent:'calculatorbox',id:'numberbox',className:'numberdiv',
   	  	   style:{
   		   width: '236px',
   			height: '247px',
@@ -99,7 +99,7 @@
 			  	  	   
   	  	   
   	  	   
-  	  	   createcomponent({elem:'div',parent:'calculatorbox',id:'operatorbox',className:'operatordiv',
+  	  	   createcomponent({tag:'div',parent:'calculatorbox',id:'operatorbox',className:'operatordiv',
 			style:{
 			width: '250px',
   			height: '246px',
@@ -108,7 +108,7 @@
   		   }  	  	   
   	  	   });
   	  	 
-  	  	   createcomponent({elem:'button',parent:'numberbox',number:'11',type:'button',id:['1','2','3','4','5','6','7','8','9','0','.'],
+  	  	   createcomponent({tag:'button',parent:'numberbox',number:'11',type:'button',id:['1','2','3','4','5','6','7','8','9','0','.'],
   	  	   innerHTML:['1','2','3','4','5','6','7','8','9','0','.'],className:'numbers',
   	  	   style:{  width: '74px',
   			float: 'left',
@@ -120,7 +120,7 @@
   			backgroundColor: 'crimson'}
   	  	   });	
   	  	   
-			createcomponent({elem:'button',parent:'operatorbox',number:'12',type:'button',
+			createcomponent({tag:'button',parent:'operatorbox',number:'12',type:'button',
 			id:['*','/','+','-','CLR','MD','MR','M+','%','MOD','CN','M-'],
 			innerHTML:['*','/','+','-','CLR','MD','MR','M+','%','MOD','CN','M-'],className:'operators',
 			style: 
@@ -134,7 +134,7 @@
   			color: 'white',
   			backgroundColor: 'darkcyan'  	
  		  		}});	
-				createcomponent({elem:'button',parent:'operatorbox',type:'button',
+				createcomponent({tag:'button',parent:'operatorbox',type:'button',
 			id:'=',
 			innerHTML:'=',className:'operators',
 			style: 
@@ -233,7 +233,7 @@
 	function createdatecalculator()
 	{
 			
-			createcomponent({elem:'div',parent:'main',id:'datebox',className:'datediv',style:{
+			createcomponent({tag:'div',parent:'main',id:'datebox',className:'datediv',style:{
 			width:'1000px',
 			height:'500px',
 			position: 'absolute',
@@ -241,7 +241,7 @@
   			visibility:'hidden' }		
 			});	//Main div
 
-			createcomponent({elem:'div',parent:'datebox',id:'datebox1',className:'datediv1',style:
+			createcomponent({tag:'div',parent:'datebox',id:'datebox1',className:'datediv1',style:
 					{
 						width:'700px',
 						height:'200px',
@@ -251,9 +251,9 @@
 			});
 			
 			
-  	  	  createcomponent({elem:'h1',parent:'datebox1',id:'header1',className:'headerdiv',innerHTML:'Date Diffference'});	//Calculator div
+  	  	  createcomponent({tag:'h1',parent:'datebox1',id:'header1',className:'headerdiv',innerHTML:'Date Diffference'});	//Calculator div
   	  	 
-  	  	  createcomponent({elem:'div',parent:'datebox',id:'datebox2',className:'datediv2',
+  	  	  createcomponent({tag:'div',parent:'datebox',id:'datebox2',className:'datediv2',
 			style: {
 				width:'700px',
 				height:'200px',
@@ -266,12 +266,12 @@
 
 
 
-		   createcomponent({elem:'h1',parent:'datebox2',id:'header2',className:'headerdiv',innerHTML:'Time Difference'});	//Calculator div
+		   createcomponent({tag:'h1',parent:'datebox2',id:'header2',className:'headerdiv',innerHTML:'Time Difference'});	//Calculator div
   	  	
 
-  	  	   createcomponent({elem:'div',parent:'datebox',id:'datebox3',className:'datediv3'});
+  	  	   createcomponent({tag:'div',parent:'datebox',id:'datebox3',className:'datediv3'});
 
-  	  	   createcomponent({elem:'span',parent:'datebox1',id:'spanelement1',type:'button',innerHTML:'Enter Date',style:
+  	  	   createcomponent({tag:'span',parent:'datebox1',id:'spanelement1',type:'button',innerHTML:'Enter Date',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -281,13 +281,13 @@
 				}
 				});	
 			//CREATING DATE INPUT BOXES FOR DATE DIFFERENCE
-			createcomponent({elem:'input',parent:'datebox1',number:2,id:['date1','date2'],type:'date',style:{
+			createcomponent({tag:'input',parent:'datebox1',number:2,id:['date1','date2'],type:'date',style:{
 					width:'150px',
 					height:'30px'			
 				}
 			});
 			//CREATING BUTTON FOR CALCULATING DATE DIFFERENCE
-			createcomponent({elem:'button',parent:'datebox1',className:'datediffbutton',type:'button',innerHTML:'Get difference',style:
+			createcomponent({tag:'button',parent:'datebox1',className:'datediffbutton',type:'button',innerHTML:'Get difference',style:
 				{	
 					width:'90px',
 					height:'30px',
@@ -296,7 +296,7 @@
 				}
 				});			
 			//CREATING P ELEMENT FOR STORING THE RESULT	
-			createcomponent({elem:'p',parent:'datebox1',id:'result1',style:
+			createcomponent({tag:'p',parent:'datebox1',id:'result1',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -304,7 +304,7 @@
 					marginLeft:'10px'
 				}
 				});	
-			 createcomponent({elem:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time 1',style:
+			 createcomponent({tag:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time 1',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -313,7 +313,7 @@
 				    fontSize: '20px'
 				}
 				});	
-			createcomponent({elem:'input',parent:'datebox2',number:2,id:['hour2.1','minute2.1'],type:'text',maxlength:'2',
+			createcomponent({tag:'input',parent:'datebox2',number:2,id:['hour2.1','minute2.1'],type:'text',maxlength:'2',
 			placeholder:['HRS','MIN'],
 			style : {
 			height:'20px',
@@ -321,7 +321,7 @@
 			
 			}             });
 			
-			createcomponent({elem:'select',parent:'datebox2',id:'select1',style:{
+			createcomponent({tag:'select',parent:'datebox2',id:'select1',style:{
 				height:'26px',
 				width:'63px',
 				marginLeft:'10px',
@@ -329,10 +329,10 @@
 				
 			}});
 			
-			createcomponent({elem:'option',parent:'select1',id:'option1.1',innerHTML:'AM'});
-			createcomponent({elem:'option',parent:'select1',id:'option1.2',innerHTML:'PM'});
+			createcomponent({tag:'option',parent:'select1',id:'option1.1',innerHTML:'AM'});
+			createcomponent({tag:'option',parent:'select1',id:'option1.2',innerHTML:'PM'});
 			
-			createcomponent({elem:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time2',style:
+			createcomponent({tag:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time2',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -342,24 +342,24 @@
 				}
 				});	
 
-			createcomponent({elem:'input',parent:'datebox2',number:2,id:['hour2.2','minute2.2'],type:'text',maxlength:'2',
+			createcomponent({tag:'input',parent:'datebox2',number:2,id:['hour2.2','minute2.2'],type:'text',maxlength:'2',
 			placeholder:['HRS','MIN'],
 			style : {
 			height:'20px',
 			width:'50px',			
 			
 			} });		
-			createcomponent({elem:'select',parent:'datebox2',id:'select2',style:{
+			createcomponent({tag:'select',parent:'datebox2',id:'select2',style:{
 				height:'26px',
 				width:'63px',
 				marginLeft:'10px',
 				marginRight:'10px'
 				
 			}});
-			createcomponent({elem:'option',parent:'select2',id:'option2.1',innerHTML:'AM'});
-			createcomponent({elem:'option',parent:'select2',id:'option2.2',innerHTML:'PM'});
+			createcomponent({tag:'option',parent:'select2',id:'option2.1',innerHTML:'AM'});
+			createcomponent({tag:'option',parent:'select2',id:'option2.2',innerHTML:'PM'});
 			
-			createcomponent({elem:'button',parent:'datebox2',className:'timediffbutton',type:'button',innerHTML:'Get difference',style:
+			createcomponent({tag:'button',parent:'datebox2',className:'timediffbutton',type:'button',innerHTML:'Get difference',style:
 				{	
 					width:'90px',
 					height:'30px',
@@ -367,7 +367,7 @@
 					marginLeft:'10px'
 				}
 				});			
-				createcomponent({elem:'p',parent:'datebox2',id:'result2',style:
+				createcomponent({tag:'p',parent:'datebox2',id:'result2',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -375,10 +375,10 @@
 					marginLeft:'10px'
 				}
 				});	
-		   createcomponent({elem:'h1',parent:'datebox3',id:'header3',className:'headerdiv',innerHTML:'Add Time Interval'});	//Calculator div
+		   createcomponent({tag:'h1',parent:'datebox3',id:'header3',className:'headerdiv',innerHTML:'Add Time Interval'});	//Calculator div
   	  	
 	//CREATING DATE INPUT BOXES FOR ADDING TIME INTERVAL  	
-	createcomponent({elem:'span',parent:'datebox3',type:'button',innerHTML:'Enter date and time',style:
+	createcomponent({tag:'span',parent:'datebox3',type:'button',innerHTML:'Enter date and time',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -387,13 +387,13 @@
 				    fontSize: '20px'
 				}
 				});	  	
-  	  		createcomponent({elem:'input',parent:'datebox3',number:1,id:'date3',type:'date',style:{
+  	  		createcomponent({tag:'input',parent:'datebox3',number:1,id:'date3',type:'date',style:{
 					width:'150px',
 					height:'30px'			
 				}
 			});
 			
-			createcomponent({elem:'input',parent:'datebox3',number:2,id:['hour3.1','minute3.1'],type:'text',maxlength:'2',
+			createcomponent({tag:'input',parent:'datebox3',number:2,id:['hour3.1','minute3.1'],type:'text',maxlength:'2',
 			placeholder:['HRS','MIN'],
 			style : {
 			height:'28px',
@@ -401,7 +401,7 @@
 			marginLeft:'10px',
 			} });		
 			
-			createcomponent({elem:'span',parent:'datebox3',id:'spanelement',type:'button',innerHTML:'Set Time Interval',style:
+			createcomponent({tag:'span',parent:'datebox3',id:'spanelement',type:'button',innerHTML:'Set Time Interval',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -410,7 +410,7 @@
 				}
 				});	
 				
-			createcomponent({elem:'input',parent:'datebox3',number:5,id:['year','months','hour3.2','minute3.2','days'],type:'text',
+			createcomponent({tag:'input',parent:'datebox3',number:5,id:['year','months','hour3.2','minute3.2','days'],type:'text',
 			placeholder: ['YRS','MONTHS','HRS','MIN','DAYS'],	
 			style : {
 			height:'28px',
@@ -419,7 +419,7 @@
 			fontSize:'15px'
 			} });	
 			
-			createcomponent({elem:'button',parent:'datebox3',className:'timeintervalbutton',type:'button',innerHTML:'Add time interval',style:
+			createcomponent({tag:'button',parent:'datebox3',className:'timeintervalbutton',type:'button',innerHTML:'Add time interval',style:
 				{	
 					width:'90px',
 					height:'40px',
@@ -427,7 +427,7 @@
 				}
 				});	
 
-			createcomponent({elem:'p',parent:'datebox3',id:'result3',style:
+			createcomponent({tag:'p',parent:'datebox3',id:'result3',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -448,7 +448,7 @@
 function emicalculator()
 	{
 		//CREATING MAIN DIV FOR EMI 
-		createcomponent({elem:'div',parent:'main',id:'emibox',className:'emidiv',style:{
+		createcomponent({tag:'div',parent:'main',id:'emibox',className:'emidiv',style:{
 			position:'absolute',
 			top:'90px',
 			left:'50px',
@@ -456,13 +456,13 @@ function emicalculator()
 	}
 	
 	});		
-	   createcomponent({elem:'div',parent:'emibox',id:'input',className:'inputdiv',
+	   createcomponent({tag:'div',parent:'emibox',id:'input',className:'inputdiv',
 			style : {
 					float:'left'
 			}	   
 	   });	
 	   //CREATING LABELS 
-	   createcomponent({ elem:'p',parent:'input',number:4,innerHTML:[ 'loan','emi','rate','months' ],
+	   createcomponent({ tag:'p',parent:'input',number:4,innerHTML:[ 'loan','emi','rate','months' ],
 	   		 style:{
 						   borderRadius: '5px',
    						marginLeft: '5px' ,
@@ -472,7 +472,7 @@ function emicalculator()
 		  
 		
 		//CREATING DIV FOR INPUTBOXES			  
-		createcomponent({elem:'div', parent:'emibox',id:'inputboxemi',className:'inputboxdiv',
+		createcomponent({tag:'div', parent:'emibox',id:'inputboxemi',className:'inputboxdiv',
 		style:{
 			 float: 'left',
   			 width: '126px',
@@ -482,7 +482,7 @@ function emicalculator()
 			 }		
 	 	 });
 	 	 //CREATING INPUTBOXES
-		createcomponent({	elem:'input',parent:'inputboxemi',number:4,type:'text', placeholder:['loan','emi','rate','months'],
+		createcomponent({	tag:'input',parent:'inputboxemi',number:4,type:'text', placeholder:['loan','emi','rate','months'],
 		id:['loan','emi','rate','months'],className:'inputboxes', style: {
 					 				 
 					 width: '115px',
@@ -492,7 +492,7 @@ function emicalculator()
 		
 		});		
 		//Create button calculate emi button
-		createcomponent({elem:'button',parent:'emibox',type:'button',id:'calculatemi',className:'calemi',innerHTML:'Calculate emi',style:{
+		createcomponent({tag:'button',parent:'emibox',type:'button',id:'calculatemi',className:'calemi',innerHTML:'Calculate emi',style:{
 			width:'100px',
 			height:'40px',
 						
