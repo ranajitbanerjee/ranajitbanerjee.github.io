@@ -252,6 +252,7 @@
 			
 			
   	  	  createcomponent({elem:'h1',parent:'datebox1',id:'header1',className:'headerdiv',innerHTML:'Date Diffference'});	//Calculator div
+  	  	 
   	  	  createcomponent({elem:'div',parent:'datebox',id:'datebox2',className:'datediv2',
 			style: {
 				width:'700px',
@@ -267,7 +268,18 @@
 
 		   createcomponent({elem:'h1',parent:'datebox2',id:'header2',className:'headerdiv',innerHTML:'Time Difference'});	//Calculator div
   	  	
+
   	  	   createcomponent({elem:'div',parent:'datebox',id:'datebox3',className:'datediv3'});
+
+  	  	   createcomponent({elem:'span',parent:'datebox1',id:'spanelement1',type:'button',innerHTML:'Enter Date',style:
+				{	
+					width:'150px',
+					height:'30px',
+					padding:'0px',
+					marginRight: '10px',
+				    fontSize: '20px'
+				}
+				});	
 			//CREATING DATE INPUT BOXES FOR DATE DIFFERENCE
 			createcomponent({elem:'input',parent:'datebox1',number:2,id:['date1','date2'],type:'date',style:{
 					width:'150px',
@@ -284,7 +296,7 @@
 				}
 				});			
 			//CREATING P ELEMENT FOR STORING THE RESULT	
-			createcomponent({elem:'p',parent:'datebox1',id:'result1',innerHTML:'Get difference',style:
+			createcomponent({elem:'p',parent:'datebox1',id:'result1',style:
 				{	
 					width:'150px',
 					height:'30px',
@@ -292,7 +304,17 @@
 					marginLeft:'10px'
 				}
 				});	
+			 createcomponent({elem:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time 1',style:
+				{	
+					width:'150px',
+					height:'30px',
+					padding:'0px',
+					marginRight: '10px',
+				    fontSize: '20px'
+				}
+				});	
 			createcomponent({elem:'input',parent:'datebox2',number:2,id:['hour2.1','minute2.1'],type:'text',maxlength:'2',
+			placeholder:['HRS','MIN'],
 			style : {
 			height:'20px',
 			width:'50px',			
@@ -310,7 +332,18 @@
 			createcomponent({elem:'option',parent:'select1',id:'option1.1',innerHTML:'AM'});
 			createcomponent({elem:'option',parent:'select1',id:'option1.2',innerHTML:'PM'});
 			
+			createcomponent({elem:'span',parent:'datebox2',id:'spanelement1',type:'button',innerHTML:'Enter time2',style:
+				{	
+					width:'150px',
+					height:'30px',
+					padding:'0px',
+					marginRight: '10px',
+				    fontSize: '20px'
+				}
+				});	
+
 			createcomponent({elem:'input',parent:'datebox2',number:2,id:['hour2.2','minute2.2'],type:'text',maxlength:'2',
+			placeholder:['HRS','MIN'],
 			style : {
 			height:'20px',
 			width:'50px',			
@@ -344,7 +377,16 @@
 				});	
 		   createcomponent({elem:'h1',parent:'datebox3',id:'header3',className:'headerdiv',innerHTML:'Add Time Interval'});	//Calculator div
   	  	
-	//CREATING DATE INPUT BOXES FOR ADDING TIME INTERVAL  	  	
+	//CREATING DATE INPUT BOXES FOR ADDING TIME INTERVAL  	
+	createcomponent({elem:'span',parent:'datebox3',type:'button',innerHTML:'Enter date and time',style:
+				{	
+					width:'150px',
+					height:'30px',
+					padding:'0px',
+					marginRight: '10px',
+				    fontSize: '20px'
+				}
+				});	  	
   	  		createcomponent({elem:'input',parent:'datebox3',number:1,id:'date3',type:'date',style:{
 					width:'150px',
 					height:'30px'			
@@ -352,6 +394,7 @@
 			});
 			
 			createcomponent({elem:'input',parent:'datebox3',number:2,id:['hour3.1','minute3.1'],type:'text',maxlength:'2',
+			placeholder:['HRS','MIN'],
 			style : {
 			height:'28px',
 			width:'50px',			
@@ -367,11 +410,13 @@
 				}
 				});	
 				
-			createcomponent({elem:'input',parent:'datebox3',number:5,id:['year','months','hour3.2','minute3.2','days'],type:'text',maxlength:'2',
+			createcomponent({elem:'input',parent:'datebox3',number:5,id:['year','months','hour3.2','minute3.2','days'],type:'text',
+			placeholder: ['YRS','MONTHS','HRS','MIN','DAYS'],	
 			style : {
 			height:'28px',
 			width:'50px',			
 			marginLeft:'10px',
+			fontSize:'15px'
 			} });	
 			
 			createcomponent({elem:'button',parent:'datebox3',className:'timeintervalbutton',type:'button',innerHTML:'Add time interval',style:
