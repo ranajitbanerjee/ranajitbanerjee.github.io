@@ -509,7 +509,7 @@ function emicalculator()
 
 		//FUNCTIONALITIES OF EMI CALCULATOR
 		//-----------------------------------------------------------------------------------
-					function calculate()
+					function calculateEmi()
 			{
 					 var principal=document.getElementById('loan');
 					 var rate=document.getElementById('rate');
@@ -561,7 +561,7 @@ function emicalculator()
 
  	//ATTACHING EVENTS 
  	//-----------------------------------------------
-	 setevents('calemi','click',calculate);
+	 setevents('calemi','click',calculateEmi);
 	 setevents('timeintervalbutton','click',addtimeinterval);
 	 setevents('timediffbutton','click',timediff);
 	 setevents('datediffbutton','click',datediff);
