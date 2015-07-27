@@ -1,185 +1,1 @@
-
-var storednumber='',lastnumber,lastoperator,flag=false;
-
-var c=0,firstnum;
-function display(input)
-{
-		
- 	var inputbox=document.getElementById('input');
-	var inputvalue=inputbox.value;
-	if(flag==true)
-	{
-		cleardisplay();
-		inputbox.value=input;
-	}
-	else
-	{
-    var index=inputbox.value.indexOf(lastoperator);
-    var string=inputbox.value.substring(0,index);
-    var decimalexists=string.search('.');
-    	if(inputvalue.lastIndexOf('.')>=0&&input=='.'&&decimalexists==-1)
-    	{ } //dont set inputbox value when decimal is already in the inputbox
-   		 else
-   		 inputbox.value=inputvalue+input;
-	
-	}
-}
-
-function displayoperator(operator)
-{
-   var val=operator;
-	var inputbox = document.getElementById("input");
-	lastoperator=operator;
-
-	if (inputbox.value.length != 0 || val =="-") 
-    {
-	    if (c == 0) 
-	    {
-
-	        firstnum = inputbox.value;
-
-	        inputbox.value = inputbox.value + val;
-	        
-	    }
-	    if (inputbox.value.length != 1)
-	    {
-	      c = 1;
-			
-			if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
-			
-			{
-
-			 inputbox.value=inputbox.value+val;	
-			 
-			}    
-				    
-	    
-	    }
-	}
-	flag=false;
-}
-function cleardisplay()
-{
-	var inputbox=document.getElementById('input');
-	inputbox.value='';
-	flag=false;
-	c=0;
-
-}
-
-function  backspace()
-{
-	var inputbox=document.getElementById('input');
-	var inputvalue=inputbox.value;
-
-    if(inputvalue[inputvalue.length-1]=='d')
-    	inputbox.value=inputvalue.substring(0,inputvalue.length-3);
-    else
-    inputbox.value=inputvalue.substring(0,inputvalue.length-1);
-	c=0;
-}
-
-function calculate()
-{
-	var inputbox=document.getElementById('input');
-	var inputvalue=inputbox.value;
-	var arr=[],i;
-	var value=inputvalue.substring(firstnum.length+1);
-			if(lastoperator=='+')
-				{
-					
-				    inputbox.value=parseFloat(firstnum)+parseFloat(value);
-				}
-		if(lastoperator=='-')
-				{
-					
-				    inputbox.value=parseFloat(firstnum)-parseFloat(value);
-				}
-			if(lastoperator=='*')
-				{
-					
-				    inputbox.value=parseFloat(firstnum)*parseFloat(value);
-				}
-		if(lastoperator=='/')
-				{
-					
-				    inputbox.value=parseFloat(firstnum)/parseFloat(value);
-				}
-		if(lastoperator=='mod')
-				{
-					
-				    inputbox.value=parseFloat(firstnum)%parseFloat(value);
-				}
-			if(lastoperator=='%')
-			{
-		
-			var value=inputbox.value[firstnum.length],firstnumber,secondnumber;
-			
-				if(value=='+'||value=='-'||value=='*'||value=='/')
-				{
-					firstnumber=inputbox.value.substring(0,firstnum.length);
-				
-					secondnumber=	inputbox.value.substring(firstnum.length+1,inputbox.value.length-1);		
-				
-					
-				}
-				else 
-				inputbox.value=firstnum/100;
-				
-				if(value=='+')
-				{
-				inputbox.value=parseFloat(firstnumber)+(parseFloat(secondnumber)/100)*parseFloat(firstnumber);
-				}
-					if(value=='-')
-				{
-				inputbox.value=parseFloat(firstnumber)-(parseFloat(secondnumber)/100)*parseFloat(firstnumber);
-				}
-					if(value=='*')
-				{
-				inputbox.value=parseFloat(firstnumber)*(parseFloat(secondnumber)/100);
-				}
-					if(value=='/')
-				{
-				inputbox.value=parseFloat(firstnumber)/(parseFloat(secondnumber)/100);
-				}
-				
-			}
-				c=0;
-
-		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY 
-
-}
-
-function memorystore()
-{
-
-   var inputbox=document.getElementById('input');
-	storednumber=parseFloat(inputbox.value);
-
-}
-
-function memoryrecall()
-{
-
-	var inputbox=document.getElementById('input');
-	inputbox.value=storednumber;
-
-}
-function memorydelete()
-{
-storednumber='';
-}
-function memoryadd()
-{
-
-	var inputbox=document.getElementById('input');
-	inputbox.value=parseFloat(inputbox.value)+parseFloat(storednumber);
-
-}
-function memoryminus()
-{
-	
-	var inputbox=document.getElementById('input');
-	inputbox.value=parseFloat(storednumber)-parseFloat(inputbox.value);
-
-}
+var storednumber='',lastnumber,lastoperator,flag=false;var c=0,firstnum;function display(input){		 	var inputbox=document.getElementById('input');	var inputvalue=inputbox.value;	if(flag===true)	{		cleardisplay();		inputbox.value=input;	}	else	{    var index=inputbox.value.indexOf(lastoperator);    var string=inputbox.value.substring(0,index);    var decimalexists=string.search('.');    	if(inputvalue.lastIndexOf('.')>=0&&input=='.'&&decimalexists==-1)    	{ } //dont set inputbox value when decimal is already in the inputbox   		 else   		 inputbox.value=inputvalue+input;		}}function displayoperator(operator){   var val=operator;	var inputbox = document.getElementById("input");	lastoperator=operator;	if (inputbox.value.length !== 0 || val ==="-")     {	    if (c === 0) 	    {	        firstnum = inputbox.value;	        inputbox.value = inputbox.value + val;	        	    }	    if (inputbox.value.length !== 1)	    {	      c = 1;						if(operator==='%'&&inputbox.value[inputbox.value.length-1]!=='%')						{			 inputbox.value=inputbox.value+val;				 			}    				    	    	    }	}	flag=false;}function cleardisplay(){	var inputbox=document.getElementById('input');	inputbox.value='';	flag=false;	c=0;}function  backspace(){	var inputbox=document.getElementById('input');	var inputvalue=inputbox.value;    if(inputvalue[inputvalue.length-1]=='d')    	inputbox.value=inputvalue.substring(0,inputvalue.length-3);    else    inputbox.value=inputvalue.substring(0,inputvalue.length-1);	c=0;}function calculate(){	var inputbox=document.getElementById('input');	var inputvalue=inputbox.value;	var arr=[],i;	var value=inputvalue.substring(firstnum.length+1);			if(lastoperator=='+')				{									    inputbox.value=parseFloat(firstnum)+parseFloat(value);				}		if(lastoperator=='-')				{									    inputbox.value=parseFloat(firstnum)-parseFloat(value);				}			if(lastoperator=='*')				{									    inputbox.value=parseFloat(firstnum)*parseFloat(value);				}		if(lastoperator=='/')				{									    inputbox.value=parseFloat(firstnum)/parseFloat(value);				}		if(lastoperator=='mod')				{									    inputbox.value=parseFloat(firstnum)%parseFloat(value);				}			if(lastoperator=='%')			{					value=inputbox.value[firstnum.length];			var firstnumber,secondnumber;							if(value=='+'||value=='-'||value=='*'||value=='/')				{					firstnumber=inputbox.value.substring(0,firstnum.length);									secondnumber=	inputbox.value.substring(firstnum.length+1,inputbox.value.length-1);															}				else 				inputbox.value=firstnum/100;								if(value=='+')				{				inputbox.value=parseFloat(firstnumber)+(parseFloat(secondnumber)/100)*parseFloat(firstnumber);				}					if(value=='-')				{				inputbox.value=parseFloat(firstnumber)-(parseFloat(secondnumber)/100)*parseFloat(firstnumber);				}					if(value=='*')				{				inputbox.value=parseFloat(firstnumber)*(parseFloat(secondnumber)/100);				}					if(value=='/')				{				inputbox.value=parseFloat(firstnumber)/(parseFloat(secondnumber)/100);				}							}				c=0;		    flag=true; //SET FLAG TO TRUE --FLAG TRUE MEANS RESULT IS CALCULATED AND NOW CLEAR THE DISPLAY }function memorystore(){   var inputbox=document.getElementById('input');	storednumber=parseFloat(inputbox.value);}function memoryrecall(){	var inputbox=document.getElementById('input');	inputbox.value=storednumber;}function memorydelete(){storednumber='';}function memoryadd(){	var inputbox=document.getElementById('input');	inputbox.value=parseFloat(inputbox.value)+parseFloat(storednumber);}function memoryminus(){		var inputbox=document.getElementById('input');	inputbox.value=parseFloat(storednumber)-parseFloat(inputbox.value);}

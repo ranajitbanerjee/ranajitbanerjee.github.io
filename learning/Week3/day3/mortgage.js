@@ -12,13 +12,13 @@ function calculateemi()
   var a=Math.pow(1+(r/1200),n);
   var res;
   var b=a/(a-1);
- if(emi.value=='')
+ if(emi.value==='')
  {
   res=p*(r/1200)*b;
    emi.value=res;
  }
  
- if(nom.value=='')
+ if(nom.value==='')
 
  	{
  		
@@ -36,7 +36,7 @@ function calculateemi()
 		}
    }
  
- if(principal.value=='')
+ if(principal.value==='')
  {
 		var l=e*(a-1);
 		result=l/(a*(r/1200));

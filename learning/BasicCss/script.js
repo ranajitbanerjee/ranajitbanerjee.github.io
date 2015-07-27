@@ -21,7 +21,7 @@ if(inp.length==3)
 }
 function stateenable()
             {
-                               var state=new Array();
+                               var state=[];
                                state[1]=("Andra Pradesh|Arunachal Pradesh|Assam|Bihar|Chattisgarh|Goa|Gujrat|Haryana|Himachal Pradesh|jammu and kashmir|jharkhand|karnataka|Madhya Pradeshmanipur|Mizoram|Telengana|Uttar Pradesh|West Bengal");
                                state[2]=("LosAngeles|NewYork|Florida|karnali");
 
@@ -100,7 +100,7 @@ function show(x)
     }
 }
    	var inputElements = document.getElementsByClassName('checkbox');
-	for(var i=0; inputElements[i]; ++i)
+	for(i=0; inputElements[i]; ++i)
 		{
 	      	   if(inputElements[i].checked)
 		   {

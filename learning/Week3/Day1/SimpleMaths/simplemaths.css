@@ -1,0 +1,32 @@
+.buttons {
+    margin-right:10px
+}
+
+#maindiv {
+    width:100%;
+    height:500px;
+    margin-top:13px
+}
+
+
+.container {
+    float:left;
+    width:100px;
+    height:100px;
+    margin-right:3px
+}
+
+
+p {
+    padding-left:81px;
+    width:10px;
+    margin-left:-8px;
+    margin-top:0;
+    margin-bottom:0
+}
+
+input[type="text"] {
+    width:40px;
+    margin-left:47px;
+    text-align:right
+}

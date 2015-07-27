@@ -6,7 +6,7 @@
 	var createDom=function(obj,parent)
 		{
 
-			var i=2,element,a,number,n,j,type;
+			var i=2,element,a,number,n,j,k,type;
 	      	//obj.number is the number of dom elements we want to create
 			if(!obj.number) //If there is no number attribute then create only one element that tag.So number is set to 1
 			{
@@ -60,7 +60,7 @@
             
 
 		
-     }
+     };
 
    	//This is radio buttons dom object.
    	//It contains style attributes and event attributes.It has multiple children which also has children.
@@ -121,7 +121,7 @@
 			     		}
      		    
      		]
-     }
+     };
 
     createDom(radiobuttons,document.body);
     var maindiv=document.getElementById('maindiv');
@@ -130,7 +130,7 @@
 			    {
 			    	var calculators=document.getElementsByClassName('calculators');
 			    	
-			    	if(calculators.length==0)
+			    	if(calculators.length===0)
 			    		createDom(calculatorobjects[e.currentTarget.id],maindiv);
 			    	else
 			    	for(i=0;i<calculators.length;i++)
@@ -395,7 +395,7 @@
 					   
 							  		   ]
 
-							   }
+							   };
 	//----------------------------------------------------------------------------------Calculator dom object------------
 				   
 
@@ -738,7 +738,7 @@
 
 						]
 
-				}
+				};
 	//-----------------------------------------------DATE CALCULATOR OBJECT ENDS------------------------------------
 
 
@@ -829,7 +829,7 @@
 								   }
 							}
 						   ]
-				}
+				};
 	//-------------------------------------------EMI CALCULATOR OBJECT ENDS--------------------------------------------------
 
 
@@ -847,7 +847,7 @@
 								input=input.currentTarget.id;
 							 	var inputbox=document.getElementById('inputbox');
 								var inputvalue=inputbox.value;
-								if(flag==true)
+								if(flag===true)
 								{
 									cleardisplay();
 									inputbox.value=input;
@@ -871,9 +871,9 @@
 								var inputbox = document.getElementById("inputbox");
 								lastoperator=val;
 							
-								if (inputbox.value.length != 0 || val =="-") 
+								if (inputbox.value.length !== 0 || val ==="-") 
 							    {
-								    if (c == 0) 
+								    if (c ===0) 
 								    {
 							
 								        firstnum = inputbox.value;
@@ -886,7 +886,7 @@
 								    	
 								      c = 1;
 										
-										if(operator=='%'&&inputbox.value[inputbox.value.length-1]!='%')
+										if(operator=='%'&&inputbox.value[inputbox.value.length-1]!=='%')
 										
 										{
 							
@@ -958,7 +958,8 @@
 										if(lastoperator=='%')
 										{
 									
-										var value=inputbox.value[firstnum.length],firstnumber,secondnumber;
+										value=inputbox.value[firstnum.length];
+										var firstnumber,secondnumber;
 										
 											if(value=='+'||value=='-'||value=='*'||value=='/')
 											{
@@ -1063,7 +1064,7 @@
 	    function timediff()
 	   {
 	   
-	  		var minutes,hours,date1,date2;
+	  		var minutes,hours,date1,date2,result2;
 			var hour1=parseInt(document.getElementById('hour2.1').value);
 			var minute1=parseInt(document.getElementById('minute2.1').value);
 			var hour2=parseInt(document.getElementById('hour2.2').value);
@@ -1091,10 +1092,10 @@
 			
 		
 					
-			var timediff=document.getElementById('result2');
+			result2=document.getElementById('result2');
 			hours=parseInt(time/3600);
 			minutes=(time/60)%60;
-			timediff.innerHTML=hours+" hours "+minutes+" minutes";
+			result2.innerHTML=hours+" hours "+minutes+" minutes";
 				   
 	   }
 	
@@ -1143,13 +1144,13 @@
 					  var a=Math.pow(1+(r/1200),n);
 					  var res;
 					  var b=a/(a-1);
-					 if(emi.value=='')
+					 if(emi.value==='')
 					 {
 					  res=p*(r/1200)*b;
 					   emi.value=res;
 					 }
 					 
-					 if(nom.value=='')
+					 if(nom.value==='')
 					
 					 	{
 					 		
@@ -1167,7 +1168,7 @@
 							}
 					   }
 					 
-					 if(principal.value=='')
+					 if(principal.value==='')
 					 {
 							var l=e*(a-1);
 							result=l/(a*(r/1200));
