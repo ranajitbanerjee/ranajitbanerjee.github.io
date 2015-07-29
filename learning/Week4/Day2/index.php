@@ -2,7 +2,7 @@
 <html>
 <?php
     session_start();
-    
+
 ?>
 <head>
 	<title>Basic css assignment</title>
@@ -10,7 +10,7 @@
 	
 </head>
 
-<body <?php if(isset($_SESSION["buttonclick"])) echo "onload=show('tab2')"; ?>>
+<body <?php if(isset($_SESSION["buttonclick"])||isset($_SESSION["submitted"])) echo "onload=show('tab2')";  ?>>
 
     <div>
         <div class="tabs">
@@ -75,9 +75,9 @@
                 <table width="270" height="170" >
                         
                         <tr><td>Country</td><td><select id="country" name="country" value="" onchange="stateenable()">
-                                              <option value="select">Select</option>
-                                              <option value="india">India</option>
-                                              <option value="usa">USA</option>
+                                              <option value="select" >Select</option>
+                                              <option value="india" <?php  if(isset($_SESSION["country"])) {if($_SESSION["country"]=="india") {echo "selected"; }} ?>>India</option>
+                                              <option value="usa"<?php if(isset($_SESSION["country"])) { if($_SESSION["country"]=="usa") { echo "selected";}}?> >USA</option>
                                             </select>
                                             <?php if(isset($_SESSION["countryerr"])) echo $_SESSION["countryerr"]; ?>  
                                             </td></tr>
@@ -95,7 +95,12 @@
             </div>
 			<button type="submit" id="subscribebutton">SUBSCRIBE</button>
 			<button type="reset" id="resetbutton">RESET</button>
-		  
+		    <?php
+                    if(isset($_SESSION["submitted"]))
+                    {
+                        echo "<p>Succesfully submitted the form</p>";
+                    }
+            ?>
 		</div>			
 	</div>	
 	<div class="model" id="model" >

@@ -68,13 +68,14 @@ if(empty($sex))
   		"\nCountry:".$country."\nState:".$state."\nInterest ".$interest." \nSubInterest ".$subinterest;
   		
         
-	$fp = fopen("formdata.csv","a") or die("Unable to open file!");; 
+	$fp = fopen("formdata.csv","a") or die("Unable to open file!");
 	if($fp)
 	{
 		fwrite($fp,$csvdata); 
         fclose($fp); 
 	}
 $_SESSION["mobileno"]=$_SESSION["email"]=$_SESSION["sex"]=$_SESSION["country"]=$_SESSION["state"]=$_SESSION["email"]=$_SESSION["name"]=$_SESSION["address"]="";
+ 	$_SESSION["submitted"]="1";
  	}
 header("Location: index.php");
 ?>
