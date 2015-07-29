@@ -2,15 +2,9 @@
 
 session_start();
 $_SESSION["buttonclick"]="1";
-$mobileno=$_POST["mobileno"];
-$email=$_POST["email"];
-$name=$_POST["name"];
-$country=$_POST["country"];
-$interest=$_POST["interest"];
-$sex=$_POST["sex"];
-$address=$_POST["address"];
-$state=$_POST["state"];
-$subinterest=$_POST["fs"];
+
+if(!empty($_POST["mobileno"]))
+{
 $len=strlen($mobileno);
 if($len!=10)
 {
@@ -18,50 +12,99 @@ if($len!=10)
 	$flag=1;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $_SESSION["emailerr"] = "Invalid email format"; 
-  $flag=1;
+}
+else
+{
+	$_SESSION["mobilenoerr"]="*Required";
+	$flag=1;
+}
+if(empty($_POST["email"]))
+{
+	
+ $_SESSION["emailerr"] = "*Required";
+  $flag=1; 
+}
+else
+{
+	if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) 
+	{
+	  $_SESSION["emailerr"] = "Invalid email format"; 
+	 $flag=1;
+	}
+	$email=$_POST["email"];
+	 $_SESSION["email"]=$email;
 }
 $str="*Required";
-if(empty($name))
+if(empty($_POST["name"]))
 {
 	$_SESSION["nameerr"]=$str;
 	$flag=1;
 }
-if($country=='select')
+else
+{
+	$name=$_POST["name"];
+}
+if($_POST["country"]=='select')
 	{
 	$_SESSION["countryerr"]=$str;
 	$flag=1;
 	}
-if($state=='select'||empty($state))
+else
+{
+
+$country=$_POST["country"];
+ $_SESSION["country"]=$country;
+}
+if(empty($_POST["state"]))
 	{
 	$_SESSION["stateerr"]=$str;
 	$flag=1;
 	}
-if(empty($interest))
+else
+{
+	 $state=$_POST["state"];
+	 $_SESSION["state"]=$state;
+}
+if(empty($_POST["interest"]))
 	{
 	$_SESSION["interesterr"]=$str;
 	$flag=1;
 	}
+else
+	{
+		 foreach($_POST["interest"] as $value) 
+           $_SESSION["interest"].=$value;
+   	}
 if(empty($address))
 	{
 	$_SESSION["addresserr"]=$str;
 	$flag=1;
 	}
+else
+{
+	$address=$_POST["address"];
+ $_SESSION["address"]=$address;
+}
 if(empty($sex))
 	{
 	$_SESSION["sexerr"]=$str;
  	$flag=1;
  	}
-   
-  $_SESSION["mobileno"]=$mobileno;
-  $_SESSION["email"]=$email;
-  $_SESSION["sex"]=$sex;
-  $_SESSION["country"]=$country;
-  $_SESSION["state"]=$state;
-  $_SESSION["email"]=$email;
-  $_SESSION["name"]=$name;
-  $_SESSION["address"]=$address;
+ else
+ {
+ 	$sex=$_POST["sex"];
+ 	 $_SESSION["sex"]=$sex;
+ }
+  if(!empty($_POST["fs"]))
+  {
+    foreach ($_POST["fs"] as $value) 
+    {
+    	$subinterest.=$value;
+    }
+
+  }
+
+ 
   if(!$flag)
   	{
   		$csvdata="\nName:".$name."\nemail:".$email."\nsex:".$sex."\nmobileno:".$mobileno."\naddress:".$address.

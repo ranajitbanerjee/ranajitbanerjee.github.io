@@ -19,26 +19,32 @@ if(inp.length==3)
 
 
 }
-function stateenable()
+function stateenable(selectedstate)
             {
-                               var state=[];
-                               state[1]=("Andra Pradesh|Arunachal Pradesh|Assam|Bihar|Chattisgarh|Goa|Gujrat|Haryana|Himachal Pradesh|jammu and kashmir|jharkhand|karnataka|Madhya Pradeshmanipur|Mizoram|Telengana|Uttar Pradesh|West Bengal");
-                               state[2]=("LosAngeles|NewYork|Florida|karnali");
 
-                               
-                                var selectedCountryIndex = document.getElementById("country").selectedIndex;
+                                   var state=[];
+                                   state[1]=("Andra Pradesh|Arunachal Pradesh|Assam|Bihar|Chattisgarh|Goa|Gujrat|Haryana|Himachal Pradesh|jammu and kashmir|jharkhand|karnataka|Madhya Pradeshmanipur|Mizoram|Telengana|Uttar Pradesh|West Bengal");
+                                   state[2]=("LosAngeles|NewYork|Florida|karnali");
 
-                                var stateElement = document.getElementById('state');
-                                stateElement.length = 0; // Fixed by Julian Woods
-                                stateElement.options[0] = new Option('Select State', '');
-                                stateElement.selectedIndex = 0;
+                                   
+                                    var selectedCountryIndex = document.getElementById("country").selectedIndex;
 
-                                var state_arr = state[selectedCountryIndex].split("|");
+                                    var stateElement = document.getElementById('state');
+                                    stateElement.length = 0; // Fixed by Julian Woods
+                                    stateElement.options[0] = new Option('Select State', '');
+                                   state_arr = state[selectedCountryIndex].split("|");
+                                   stateElement.selectedIndex = 0;
+                                    for (var i = 0; i < state_arr.length; i++)
+                                    {
+                                       stateElement.options[stateElement.length] = new Option(state_arr[i], state_arr[i]);
 
-                                for (var i = 0; i < state_arr.length; i++)
-                                {
-                                   stateElement.options[stateElement.length] = new Option(state_arr[i], state_arr[i]);
-                                }
+                                    }
+                                      if(selectedstate)
+                                    {
+                                        stateElement.value=selectedstate;
+                                    }
+                                    
+                 
              }
 
 var k;
