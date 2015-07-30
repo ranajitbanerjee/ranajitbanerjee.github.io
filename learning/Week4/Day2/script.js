@@ -23,7 +23,7 @@ function stateenable(selectedstate)
             {
 
                                    var state=[];
-                                   state[1]=("Andra Pradesh|Arunachal Pradesh|Assam|Bihar|Chattisgarh|Goa|Gujrat|Haryana|Himachal Pradesh|jammu and kashmir|jharkhand|karnataka|Madhya Pradeshmanipur|Mizoram|Telengana|Uttar Pradesh|West Bengal");
+                                   state[1]=("Andra Pradesh|ArunachalPradesh|Assam|Bihar|Chattisgarh|Goa|Gujrat|Haryana|HimachalPradesh|jammuandkashmir|jharkhand|karnataka|MadhyaPradesh|manipur|Mizoram|Telengana|UttarPradesh|WestBengal");
                                    state[2]=("LosAngeles|NewYork|Florida|karnali");
 
                                    

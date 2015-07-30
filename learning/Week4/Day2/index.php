@@ -62,10 +62,11 @@
                         <tr><td>MobileNum</td><td><input type="text" id="phno" name="mobileno" value=<?php if(isset($_SESSION["mobileno"])) echo $_SESSION["mobileno"]; ?>><?php if(isset($_SESSION["mobilenoerr"])) echo $_SESSION["mobilenoerr"]; ?> </span></td></tr>
                         <tr><td>Sex</td><td><input type="radio" id="sex" value="male" name="sex" <?php if(isset($_SESSION["sex"])){ if($_SESSION["sex"]=="male") echo "checked"; }?>>Male<input type="radio" name="sex" id="sex" value="female" <?php if(isset($_SESSION["sex"])){ if($_SESSION["sex"]=="female") echo "checked"; }?>>Female 
                             <?php if(isset($_SESSION["sexerr"])) echo $_SESSION["sexerr"]; ?>
+                        <?php if(isset($_SESSION["sex"])){ if($_SESSION["sex"]=="male") echo $_SESSION["sex"]; }?>
                         </td></tr>
                         <tr><td>Interest</td>
                         <td><input type="checkbox" name="interest[]" value="football" <?php if(isset($_SESSION["interest"])){ if(strpos($_SESSION["interest"],'football') !== false) echo "checked"; }?> onclick="selection(this)">Football
-                        <input type="checkbox" name="interest[]" value="movie" <?php if(isset($_SESSION["interest"])){ if(strpos($_SESSION["interest"],'movies') !== false) echo "checked"; }?> onclick="selection(this)">Movie
+                        <input type="checkbox" name="interest[]" value="movie" <?php if(isset($_SESSION["interest"])){ if(strpos($_SESSION["interest"],'movie') !== false) echo "checked"; }?> onclick="selection(this)">Movie
                         <input type="checkbox" name="interest[]" value="reading" <?php if(isset($_SESSION["interest"])){ if(strpos($_SESSION["interest"],'reading') !== false) echo "checked"; }?> onclick="selection(this)">Reading
                        
 

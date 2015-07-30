@@ -2,16 +2,19 @@
 
 session_start();
 $_SESSION["buttonclick"]="1";
-
+$subinterest="";
+$interest="";
+$_SESSION["interest"]="";
 if(!empty($_POST["mobileno"]))
 {
+$mobileno=$_POST["mobileno"];
 $len=strlen($mobileno);
 if($len!=10)
 {
 	$_SESSION["mobilenoerr"]="Mobile no is invalid";
+	$_SESSION["mobileno"]=$mobileno;
 	$flag=1;
 }
-
 }
 else
 {
@@ -43,6 +46,7 @@ if(empty($_POST["name"]))
 else
 {
 	$name=$_POST["name"];
+	$_SESSION["name"]=$name;
 }
 if($_POST["country"]=='select')
 	{
@@ -73,9 +77,14 @@ if(empty($_POST["interest"]))
 else
 	{
 		 foreach($_POST["interest"] as $value) 
-           $_SESSION["interest"].=$value;
+		 {
+           
+   		   $interest.=$value;
+   		   $_SESSION["interest"].=$value;
+   		   echo $_SESSION["interest"];
+   		 }
    	}
-if(empty($address))
+if(empty($_POST["address"]))
 	{
 	$_SESSION["addresserr"]=$str;
 	$flag=1;
@@ -85,7 +94,7 @@ else
 	$address=$_POST["address"];
  $_SESSION["address"]=$address;
 }
-if(empty($sex))
+if(empty($_POST["sex"]))
 	{
 	$_SESSION["sexerr"]=$str;
  	$flag=1;
