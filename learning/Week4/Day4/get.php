@@ -1,5 +1,5 @@
 <?php
-
+//updated
 session_start();
 $_SESSION["buttonclick"]="1";
 $_SESSION["interest"]="";
@@ -8,17 +8,16 @@ $favorites="";
 $flag=0;
 if(!empty($_POST["mobileno"]))
 {
+	$mobileno=$_POST["mobileno"];
 	$len=strlen($_POST["mobileno"]);
 	if($len!=10)
 	{
 		$_SESSION["mobilenoerr"]="Mobile no is invalid";
 		$flag=1;
-	}
-	else
-	{
-		$mobileno=$_POST["mobileno"];
+		
 		$_SESSION["mobileno"]=$mobileno;
 	}
+	
 }
 	else
 	{
@@ -51,6 +50,7 @@ if(empty($_POST["name"]))
 else
 {
 	$name=$_POST["name"];
+	$_SESSION["name"]=$name;
 }
 if($_POST["country"]=='select')
 	{
