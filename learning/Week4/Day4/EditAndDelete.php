@@ -38,7 +38,7 @@ echo "<table style='border:2px solid black;width:200;border-radius: 10px;
 </tr>";
 while ($result=mysqli_fetch_array($data1)) 
 	{
-		echo "<form action='edit.php' method='post'>";
+		echo "<form action='EditAndDelete.php' method='post'>";
 		echo "<tr>";
 		echo "<td>";
 		echo "<input type='text' name='name' value='". $result['name']."'";
