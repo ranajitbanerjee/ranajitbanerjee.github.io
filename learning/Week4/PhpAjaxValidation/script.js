@@ -128,6 +128,7 @@ function resetstate()
     {
         var state=document.getElementById('state');
         state.options.length=0;
+        document.getElementById('message').innerHTML="";
     }
 function subscribe()
 {
