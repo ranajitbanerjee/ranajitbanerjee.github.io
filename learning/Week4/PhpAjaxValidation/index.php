@@ -102,7 +102,7 @@
             </div>
 
 			<button type="button" id="subscribebutton" onclick="subscribe()">SUBSCRIBE</button>
-			<button type="reset" id="resetbutton" onclick="resetstate()">RESET</button>
+			<button type="reset" id="resetbutton" onclick="resetstate('reset')">RESET</button>
 		</div>			
 	</div>	
 	<div class="model" id="model" >

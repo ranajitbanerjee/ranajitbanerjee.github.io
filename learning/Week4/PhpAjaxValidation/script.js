@@ -124,10 +124,11 @@ function show(x)
     console.log("}");
 	
 	}
-function resetstate()
+function resetstate(m)
     {
         var state=document.getElementById('state');
         state.options.length=0;
+        if(m=='reset')
         document.getElementById('message').innerHTML="";
     }
 function subscribe()
@@ -196,7 +197,7 @@ function subscribe()
              if(response.message=="SUCCESSFULLY SUBSCRIBED")
                 {
 
-                    document.getElementById("form1").reset();
+                    document.getElementById("form1").reset('message');
                     resetstate();
                 }
             }
