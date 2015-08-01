@@ -129,7 +129,7 @@
             </div>
              <div class=selectinterest id="Reading">
                     <h2>SELECT GENRE</h2>
-                    <input type="checkbox" name="fs[]" value="satire">Satire
+                    <input type="checkbox" name="fs" value="satire">Satire
                         <input type="checkbox" name="fs" value="fiction">Fiction
                         <input type="checkbox" name="fs" value="guide">Guide
                         <input type="checkbox" name="fs" value="travel">Travel
