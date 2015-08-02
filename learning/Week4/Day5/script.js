@@ -1,24 +1,3 @@
-
-function check(input)
-{
-var inp=input.value;
-if(isNaN(inp)||inp.length>12)
-  alert("Please enter a valid no");
-if(inp.length==2)
-{
-if(inp[0]!='9'||inp[1]!='1')
-    alert("Enter 91 as india code");
-}
-if(inp.length==3)
-{
-    if(inp[2]!='9'&&inp[2]!='8'&inp[2]!='7')
-        alert("enter a valid mobile no");
-}
-//if(inp[2]!='9'&&inp[2]!='8'&&inp[2]!='7')
-        //alert(inp[2]);
-
-
-}
 function stateenable()
             {
 
@@ -54,12 +33,14 @@ function selection(cb) {
     
 }
 
+
 function hide() {
     
     document.getElementById("model").style.visibility = 'hidden';
     document.getElementById(k).style.visibility = 'hidden';
     
 }
+
 
 function show(x)
     {
@@ -90,45 +71,15 @@ function show(x)
 
         }
     }
-    function json()
-	{
-	var sex,interest="";
-	var a=document.getElementById("name").value;
-    	var b=document.getElementById("email").value;
-    	var c = document.getElementsByName('sex');
-	for (var i =c.length; i--;) {
-   	if (c[i].checked) {
-        sex= c[i].value;
-        break;
-    }
-}
-   	var inputElements = document.getElementsByClassName('checkbox');
-	for(i=0; inputElements[i]; ++i)
-		{
-	      	   if(inputElements[i].checked)
-		   {
-		  
-	           interest= interest+inputElements[i].value+" ";
-	           
-		   }
-		}
-    var e=document.getElementById('country').value;
-    var f=document.getElementById('textarea').value;
-    console.log("{");
-    console.log('"name":"'+a+'",');
-    console.log('"email":"'+b+'",');
-    console.log('"sex":"'+sex+'",');
-    console.log('"interest":"'+interest+'",');
-    console.log('"country":"'+e+'",');
-    console.log('"address":"'+f+'"');
-    console.log("}");
-	
-	}
+   
+
 function resetall()
     {
         var state=document.getElementById('state');
         state.options.length=0;
     }
+
+
 function subscribe()
 {
     var xmlhttp,name,mobileno,email,sex,address,country,state,interest,sexvalue,i;
@@ -174,13 +125,15 @@ function subscribe()
         }
     var favorites=document.getElementsByName("fs");
     //console.log(favorites.length+" "+favorites);
+    
     for(i=0;i<favorites.length;i++)
         {
            // console.log(favorites[i].value);
             if(favorites[i].checked)
                 favs=favs+favorites[i].value+",";       
         }
-   // console.log(favorites);
+
+        
     xmlhttp.onreadystatechange=function()
     {
         if(xmlhttp.readyState==4&&xmlhttp.status==200)
@@ -213,11 +166,13 @@ function subscribe()
 
 
 }
+
+//Edit or delete data ajax function Here element is the edit or delete button object
 function modifydata(element)
 {
-    var form=element.parentElement.parentElement.firstChild; //form element
+    var form=element.parentElement.parentElement.firstChild; // Get the form element to which the edit button or delete button belongs to
     //console.log(form);
-    var rowelement=form.parentElement; //row element
+    var rowelement=form.parentElement; //Get the row element from which edit or delete button is invoked
     var name,sex,email,country,state,address,mobileno,interests,favorites,xmlhttp,i,params;
     if(window.XMLHttpRequest)
         {
@@ -243,23 +198,28 @@ function modifydata(element)
             {
                 console.log(xmlhttp.responseText);
                 var response=JSON.parse(xmlhttp.responseText);
-                console.log(response.message);
+
                 if(response.message=='Successfully deleted')
                    {
+                    //If delete operation is successfull then remove the row element which was deleted
                       rowelement.parentElement.removeChild(rowelement);
                    }
+                //set the message span element to response message variable
                 document.getElementById('message').innerHTML=response.message;
                 
             }
 
         };
-    console.log(element.name);
+//if edit button was clicked then element name is edit
     if(element.name=='edit')
-       {
+       { 
+        //store all the input fields value and operation name to params variable.Operation means edit or delete operation
          params="name="+name+"&email="+email+"&mobileno="+mobileno+"&sex="+sex+"&country="+country+"&state="+state+"&address="+address+"&interests="+interests+"&favorites="+favorites+"&operation="+element.name;
        }
     if(element.name=='delete')
         {
+     //store only the email field value for delete operation as email field is primary key
+       
           params="email="+email+"&operation="+element.name;
         }
         xmlhttp.open("POST","EditAndDelete.php",true);
