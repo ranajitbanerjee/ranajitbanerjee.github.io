@@ -131,18 +131,22 @@ function resetall()
     }
 function subscribe()
 {
-    var xmlhttp;
+    var xmlhttp,name,mobileno,email,sex,address,country,state,interest,sexvalue,i;
+    var interests="";
+    var favs="";
+
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    var name=document.getElementById('name').value;
-    var mobileno=document.getElementById('mobileno').value;
-    var email=document.getElementById('email').value;
-    var sex=document.getElementsByName('sex');
-    var address=document.getElementById('address').value;
-    var country=document.getElementById('country').value;
-    var state=document.getElementById('state');
-    var interest=document.getElementsByName('interest');
-    var sexvalue="";
+
+     name=document.getElementById('name').value;
+     mobileno=document.getElementById('mobileno').value;
+     email=document.getElementById('email').value;
+     sex=document.getElementsByName('sex');
+     address=document.getElementById('address').value;
+     country=document.getElementById('country').value;
+     state=document.getElementById('state');
+     interest=document.getElementsByName('interest');
+     sexvalue="";
     if(state.options.length!==0)
     {
         state=state.options[state.selectedIndex].value;
@@ -150,9 +154,7 @@ function subscribe()
     }
     else
         state="";
-    var interests="";
-    var favs="";
-    var i=0;
+   
     for(i=0;i<3;i++)
         {
             if(interest[i].checked)
@@ -178,7 +180,7 @@ function subscribe()
             if(favorites[i].checked)
                 favs=favs+favorites[i].value+",";       
         }
-    console.log(favorites);
+   // console.log(favorites);
     xmlhttp.onreadystatechange=function()
     {
         if(xmlhttp.readyState==4&&xmlhttp.status==200)
@@ -186,7 +188,7 @@ function subscribe()
 
             console.log(xmlhttp.responseText);
             var response=JSON.parse(xmlhttp.responseText);
-                for(var i in response)
+                for(i in response)
                 {
                      
                    // console.log(i+" "+response[i]);
@@ -202,12 +204,66 @@ function subscribe()
             }
         
     };
-    var params="name="+name+"&email="+email+"&mobileno="+mobileno+"&interests="+interests+"&sexvalue="+sexvalue+"&country="+country+"&state="+state+"&address="+address+"&interests="+interests+"&favorites="+favs;
-   // console.log(params);
+    var params="name="+name+"&email="+email+"&mobileno="+mobileno+"&sexvalue="+sexvalue+"&country="+country+"&state="+state+"&address="+address+"&interests="+interests+"&favorites="+favs;
+    console.log(params);
     xmlhttp.open("POST", "get.php", true);
     xmlhttp.setRequestHeader("Content-type",
         "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 
 
+}
+function modifydata(element)
+{
+    var form=element.parentElement.parentElement.firstChild; //form element
+    //console.log(form);
+    var rowelement=form.parentElement; //row element
+    var name,sex,email,country,state,address,mobileno,interests,favorites,xmlhttp,i,params;
+    if(window.XMLHttpRequest)
+        {
+            xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+     name=form[0].value;
+     sex=form[1].value;
+     email=form[2].value;
+     country=form[3].value;
+     state=form[4].value;
+     address=form[5].value;
+     mobileno=form[6].value;
+     interests=form[7].value;
+     favorites=form[8].value;
+
+    xmlhttp.onreadystatechange=function() 
+        {
+            if(xmlhttp.readyState==4&&xmlhttp.status==200)
+            {
+                console.log(xmlhttp.responseText);
+                var response=JSON.parse(xmlhttp.responseText);
+                console.log(response.message);
+                if(response.message=='Successfully deleted')
+                   {
+                      rowelement.parentElement.removeChild(rowelement);
+                   }
+                document.getElementById('message').innerHTML=response.message;
+                
+            }
+
+        };
+    console.log(element.name);
+    if(element.name=='edit')
+       {
+         params="name="+name+"&email="+email+"&mobileno="+mobileno+"&sex="+sex+"&country="+country+"&state="+state+"&address="+address+"&interests="+interests+"&favorites="+favorites+"&operation="+element.name;
+       }
+    if(element.name=='delete')
+        {
+          params="email="+email+"&operation="+element.name;
+        }
+        xmlhttp.open("POST","EditAndDelete.php",true);
+         xmlhttp.setRequestHeader("Content-type",
+        "application/x-www-form-urlencoded");
+        xmlhttp.send(params);
 }

@@ -1,20 +1,66 @@
-<html>
-	<head>
-		<script type="text/javascript" src="modify.js"></script>
-		<link href="sty.css" rel="stylesheet" type="text/css">
-	</head>
+
+
 <?php
+
 $conn = new mysqli("localhost", "root", "","subscription");
 
 		// Check connection
-		if ($conn->connect_error) 
+if ($conn->connect_error) 
 		{
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
 else
 	{
-		$data1=mysqli_query($conn,"Select * from formdata");
+		if(isset($_POST["operation"]))
+					{
+						if($_POST["operation"]=='edit')
+							{
+								editdata();
+							}
+						if($_POST["operation"]=='delete')
+							{
+								deletedata();
+							}
+					}
+		else
+		{
+			fetchdata();
+		}
+		
+	}
+
+function editdata()
+{
+		$editquery="UPDATE formdata SET name='$_POST[name]',sex='$_POST[sex]',email='$_POST[email]',country='$_POST[country]',
+										state='$_POST[state]',address='$_POST[address]',mobileno='$_POST[mobileno]',interest='$_POST[interests]',favorites='$_POST[favorites]' where email='$_POST[email]'";                              
+										
+										if(mysqli_query($GLOBALS['conn'],$editquery))
+										{
+											echo '{"message":"Successfully updated"}';
+											
+										}
+										else
+										{
+											echo "Error";
+										}
+}
+
+function deletedata()
+{
+	$deletequery="DELETE from formdata where email='$_POST[email]'";
+											if(mysqli_query($GLOBALS['conn'],$deletequery))
+											{
+												echo '{"message":"Successfully deleted"}';
+											}		
+}
+
+function fetchdata()
+	{
+	echo  "<html><head><script type=\"text/javascript\" src=\"script.js\"></script>
+		<link href=\"editpage.css\" rel=\"stylesheet\" type=\"text/css\">
+		</head>";
+		$data1=mysqli_query($GLOBALS['conn'],"Select * from formdata");
 
 		echo "<h1> Subscriber details </h1>";
 		echo "<h2 id='message'></h2>";
@@ -50,15 +96,15 @@ else
 				echo "<td>"."<input type='text' name='interests' value='". $result['interest']."'></td>";
 				
 				echo "<td>"."<input type='text' name='favorites' value='". $result['favorites']."'></td>";
-				echo "<td>"."<input type='button' name='edit' value='edit' onclick='editdata(this)'>"."</td>";
-				echo "<td>"."<input type='button' name='delete' value='delete' onclick='editdata(this)''>"."</td>";
+				echo "<td>"."<input type='button' name='edit' value='edit' onclick='modifydata(this)'>"."</td>";
+				echo "<td>"."<input type='button' name='delete' value='delete' onclick='modifydata(this)''>"."</td>";
 				echo "</form>";
 				echo "</tr>";
 				
 
 			}
 			echo "</table>";
+		echo "</html>";
 	}
 ?>
 
-</html>

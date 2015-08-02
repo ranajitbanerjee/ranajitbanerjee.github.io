@@ -1,18 +1,23 @@
 <?php
 
-
+//Declaring error messages variables and initializing it with empty string
 $nameErr=$emailErr=$sexErr=$addressErr=$interestErr=$mobilenoErr=$countryErr=$stateErr="";
+
+//Declaring flag variable if flag is 0 then all input fields are valid
+
 $flag=0;
 
 
+//If request method is post then check input fields if any field is invalid or empty then set flag to 1
+
  if($_SERVER["REQUEST_METHOD"]=='POST')
  {
-     	if(empty($_POST["name"]))
-     	{
+     	if(empty($_POST["name"])) 
+        {       
      		$nameErr="*Name Required";
-     		$flag=1;
+     		$flag=1;             
      	}
-    	if(empty($_POST["email"]))
+    	if(empty($_POST["email"]))             
      	{
      		$emailErr="*Email Required";
      		$flag=1;
@@ -20,13 +25,16 @@ $flag=0;
      	else 
      	{
           
+          //Checking if email format is correct
          if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
              {
                 $emailErr = "Email_is_incorrect";
                 $flag=1;
              }
+           //if email format is correct then check availability of email
           else
             {
+
                 $conn = new mysqli("localhost", "root", "","subscription");
                 $selectquery="SELECT email from formdata where email='$_POST[email]'";
                 $result=mysqli_query($conn,$selectquery);
@@ -82,16 +90,18 @@ $flag=0;
      		$interestErr="*Interest Required";
      		$flag=1;
      	}
+
+        //if flag is 1 then input fields are not valid or empty then echo a json string containing all the error messages
      	if($flag==1)
-     	{
+        {
         $result='{"nameErr":"'.$nameErr.'","mobilenoErr":"'.$mobilenoErr.'","emailErr":"'.$emailErr.'","sexErr":"'.$sexErr.'","interestErr":"'.$interestErr.'","countryErr":"'.$countryErr.'","stateErr":"'.$stateErr.'","addressErr":"'.$addressErr.'","message":""}';
         echo $result;
-     	}
+        }
  }
-  
+  //if flag 0 then all fields valid so insert the data to the table
   if($flag==0)
   	{
-  		  $name=$_POST["name"];
+  		$name=$_POST["name"];
         $sex=$_POST["sexvalue"];
         $email=$_POST["email"];
         $country=$_POST["country"];
@@ -100,7 +110,7 @@ $flag=0;
         $mobileno=$_POST["mobileno"];
         $interest= $_POST["interests"];
         $favorites=$_POST["favorites"];
-        $conn = new mysqli("localhost", "root", "","subscription");
+        $conn = new mysqli("localhost", "root", "","subscription");  //creating connection object
 
         // Check connection
         if ($conn->connect_error) 
@@ -118,7 +128,7 @@ $flag=0;
         {
             echo "Error: " . $sql1 . "" . mysqli_error($conn);
         }
-      mysqli_close($conn);
+      mysqli_close($conn);  //Closing connection
 
  	}
 

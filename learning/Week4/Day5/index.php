@@ -48,9 +48,10 @@
 		 <div class=innerdiv1Inside id="innerleft">
                 <h2>Subscription Form</h2>
                 <table width="270" height="200" >
-                        <tr><td>Name</td><td><input type="text" id="name" name="name">
-                         <span id="nameErr"></span></td></tr>
-                        </td></tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" id="name" name="name"> <span id="nameErr"></span></td>
+                        </tr>
                         <tr><td>Email</td><td><input type="text" id="email" name="email" >
                             <span id="emailErr"></span></td></tr>
                          </td></tr>
@@ -105,7 +106,7 @@
 			<button type="reset" id="resetbutton" onclick="resetall()">RESET</button>
 		</div>			
 	</div>	
-	<div class="model" id="model" >
+	<div class="model" id="model">
             <div class=selectinterest id="football">
                     <h2>SELECT SPORTS</h2>
                         <input type="checkbox" name="fs" value="Messi">Messi
