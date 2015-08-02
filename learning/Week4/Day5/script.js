@@ -124,7 +124,7 @@ function show(x)
     console.log("}");
 	
 	}
-function resetstate()
+function resetall()
     {
         var state=document.getElementById('state');
         state.options.length=0;
@@ -171,10 +171,10 @@ function subscribe()
             sexvalue="female";
         }
     var favorites=document.getElementsByName("fs");
-    console.log(favorites.length+" "+favorites);
+    //console.log(favorites.length+" "+favorites);
     for(i=0;i<favorites.length;i++)
         {
-            console.log(favorites[i].value);
+           // console.log(favorites[i].value);
             if(favorites[i].checked)
                 favs=favs+favorites[i].value+",";       
         }
@@ -188,22 +188,22 @@ function subscribe()
             var response=JSON.parse(xmlhttp.responseText);
                 for(var i in response)
                 {
-                    console.log(i+" "+response[i]);
-                    document.getElementById(i).innerHTML=response[i];
-
-                   
+                     
+                   // console.log(i+" "+response[i]);
+                   document.getElementById(i).innerHTML=response[i];
+                         
                 }
-             if(response.message=="SUCCESSFULLY SUBSCRIBED")
+             if(response.message=="Successfully subscribed")
                 {
 
                     document.getElementById("form1").reset();
-                    resetstate();
+                    resetall();
                 }
             }
         
     };
     var params="name="+name+"&email="+email+"&mobileno="+mobileno+"&interests="+interests+"&sexvalue="+sexvalue+"&country="+country+"&state="+state+"&address="+address+"&interests="+interests+"&favorites="+favs;
-    console.log(params);
+   // console.log(params);
     xmlhttp.open("POST", "get.php", true);
     xmlhttp.setRequestHeader("Content-type",
         "application/x-www-form-urlencoded");
@@ -211,4 +211,3 @@ function subscribe()
 
 
 }
-

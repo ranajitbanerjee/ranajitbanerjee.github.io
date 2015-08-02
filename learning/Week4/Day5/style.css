@@ -260,5 +260,12 @@ div.sex {
 }
 #message
 {
-    margin-top: 20px;
+    margin-top: -17px;
+    font-size: 20px;
+    color: blueviolet;
+    font-weight: bold;
+}
+span 
+{
+    margin-left: 20px;
 }

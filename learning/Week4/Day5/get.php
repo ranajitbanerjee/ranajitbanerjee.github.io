@@ -7,86 +7,99 @@ $flag=0;
 
  if($_SERVER["REQUEST_METHOD"]=='POST')
  {
- 	if(empty($_POST["name"]))
- 	{
- 		$nameErr="*Name Required";
- 		$flag=1;
- 	}
- 	if(empty($_POST["email"]))
- 	{
- 		$emailErr="*Email Required";
- 		$flag=1;
- 	}
- 	else 
- 	{
-      
-     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
-         {
-          $emailErr = "Email_is_incorrect";
-          $flag=1;
-         }
-    }
+     	if(empty($_POST["name"]))
+     	{
+     		$nameErr="*Name Required";
+     		$flag=1;
+     	}
+    	if(empty($_POST["email"]))
+     	{
+     		$emailErr="*Email Required";
+     		$flag=1;
+     	}
+     	else 
+     	{
+          
+         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
+             {
+                $emailErr = "Email_is_incorrect";
+                $flag=1;
+             }
+          else
+            {
+                $conn = new mysqli("localhost", "root", "","subscription");
+                $selectquery="SELECT email from formdata where email='$_POST[email]'";
+                $result=mysqli_query($conn,$selectquery);
+                $numrows=mysqli_num_rows($result);
+                if($numrows>0)
+                  {
+                   $emailErr = "This email is already registered";
+                   $flag=1;
+                  }
+                mysqli_close($conn);
+            }
+        }
 
- 	if(empty($_POST["sexvalue"]))
- 	{
+     	if(empty($_POST["sexvalue"]))
+     	{
 
- 		$sexErr="*Sex Required";
- 		$flag=1;
+     		$sexErr="*Sex Required";
+     		$flag=1;
 
- 	}
-    
- 	if(empty($_POST["mobileno"]))
- 	{
- 		$mobilenoErr="*Mobileno Required";
- 		$flag=1;
- 	}
+     	}
+        
+     	if(empty($_POST["mobileno"]))
+     	{
+     		$mobilenoErr="*Mobileno Required";
+     		$flag=1;
+     	}
 
- 	else
- 	{
- 		if(strlen($_POST["mobileno"])!=10)
- 		{
- 			$mobilenoErr="Mobiie no is invalid";
- 			$flag=1;
- 		}
- 	}
- 	if($_POST["country"]=='select')
- 	{
- 		$countryErr="*Country Required";
- 		$flag=1;
- 	}
- 	if(empty($_POST["state"]))
- 	{
- 		$stateErr="*State Required";
- 		$flag=1;
- 	}
- 	if(empty($_POST["address"]))
- 	{
- 		$addressErr="*Address Required";
- 		$flag=1;
- 	}
- 	if(empty($_POST["interests"]))
- 	{
- 		$interestErr="*Interest Required";
- 		$flag=1;
- 	}
- 	if($flag==1)
- 	{
- 	 $result='{"nameErr":"'.$nameErr.'","mobilenoErr":"'.$mobilenoErr.'","emailErr":"'.$emailErr.'","sexErr":"'.$sexErr.'","interestErr":"'.$interestErr.'","countryErr":"'.$countryErr.'","stateErr":"'.$stateErr.'","addressErr":"'.$addressErr.'"}';
-    echo $result;
- 	}
+     	else
+     	{
+     		if(strlen($_POST["mobileno"])!=10)
+     		{
+     			$mobilenoErr="Mobiie no is invalid";
+     			$flag=1;
+     		}
+     	}
+     	if($_POST["country"]=='select')
+     	{
+     		$countryErr="*Country Required";
+     		$flag=1;
+     	}
+     	if(empty($_POST["state"]))
+     	{
+     		$stateErr="*State Required";
+     		$flag=1;
+     	}
+     	if(empty($_POST["address"]))
+     	{
+     		$addressErr="*Address Required";
+     		$flag=1;
+     	}
+     	if(empty($_POST["interests"]))
+     	{
+     		$interestErr="*Interest Required";
+     		$flag=1;
+     	}
+     	if($flag==1)
+     	{
+        $result='{"nameErr":"'.$nameErr.'","mobilenoErr":"'.$mobilenoErr.'","emailErr":"'.$emailErr.'","sexErr":"'.$sexErr.'","interestErr":"'.$interestErr.'","countryErr":"'.$countryErr.'","stateErr":"'.$stateErr.'","addressErr":"'.$addressErr.'","message":""}';
+        echo $result;
+     	}
  }
-
+  
   if($flag==0)
   	{
   		  $name=$_POST["name"];
         $sex=$_POST["sexvalue"];
         $email=$_POST["email"];
         $country=$_POST["country"];
-         $state=$_POST["state"];
-         $address=$_POST["address"];
-         $mobileno=$_POST["mobileno"];
-          $interest= $_POST["interests"];
-          $favorites=$_POST["favorites"];
+        $state=$_POST["state"];
+        $address=$_POST["address"];
+        $mobileno=$_POST["mobileno"];
+        $interest= $_POST["interests"];
+        $favorites=$_POST["favorites"];
         $conn = new mysqli("localhost", "root", "","subscription");
 
         // Check connection
@@ -98,12 +111,15 @@ $flag=0;
         VALUES ('$name','$sex','$email','$country','$state','$address','$mobileno','$interest','$favorites')";
         if (mysqli_query($conn, $sql1)) 
         {
-          echo '{"message":"SUCCESSFULLY SUBSCRIBED"}';
+          echo '{"nameErr":"'.$nameErr.'","mobilenoErr":"'.$mobilenoErr.'","emailErr":"'.$emailErr.'","sexErr":"'.$sexErr.'","interestErr":"'.$interestErr.'","countryErr":"'.$countryErr.'","stateErr":"'.$stateErr.'","addressErr":"'.$addressErr.'","message":"Successfully subscribed"}';
 
         }
         else
         {
-            echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql1 . "" . mysqli_error($conn);
         }
+      mysqli_close($conn);
+
  	}
+
 ?>

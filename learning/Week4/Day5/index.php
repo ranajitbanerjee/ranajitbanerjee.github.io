@@ -56,7 +56,7 @@
                          </td></tr>
                         <tr><td>MobileNum</td>
                         <td>
-                        <input type="text" id="mobileno" name="mobileno">
+                        <input type="text" id="mobileno" name="mobileno" > 
                          <span id="mobilenoErr"></span>
                         </td>
                        
@@ -102,7 +102,7 @@
             </div>
 
 			<button type="button" id="subscribebutton" onclick="subscribe()">SUBSCRIBE</button>
-			<button type="reset" id="resetbutton" onclick="resetstate()">RESET</button>
+			<button type="reset" id="resetbutton" onclick="resetall()">RESET</button>
 		</div>			
 	</div>	
 	<div class="model" id="model" >
