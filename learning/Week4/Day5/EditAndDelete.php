@@ -2,16 +2,8 @@
 
 <?php
 
-$conn = new mysqli("localhost", "root", "","subscription");
+$conn;
 
-		// Check connection
-if ($conn->connect_error) 
-		{
-		    die("Connection failed: " . $conn->connect_error);
-		}
-
-else
-	{
 		if(isset($_POST["operation"]))
 					{
 						if($_POST["operation"]=='edit')
@@ -28,14 +20,15 @@ else
 			fetchdata();
 		}
 		
-	}
 
 function editdata()
 {
+	if(connectdb())
+		$conn=connectdb();
 		$editquery="UPDATE formdata SET name='$_POST[name]',sex='$_POST[sex]',email='$_POST[email]',country='$_POST[country]',
 										state='$_POST[state]',address='$_POST[address]',mobileno='$_POST[mobileno]',interest='$_POST[interests]',favorites='$_POST[favorites]' where email='$_POST[email]'";                              
 										
-										if(mysqli_query($GLOBALS['conn'],$editquery))
+										if(mysqli_query($conn,$editquery))
 										{
 											echo '{"message":"Successfully updated"}';
 											
@@ -44,23 +37,40 @@ function editdata()
 										{
 											echo "Error";
 										}
+		mysqli_close($conn);
 }
 
+function connectdb()
+{
+	$GLOBALS['conn'] = new mysqli("localhost", "root", "","subscription");
+
+		// Check connection
+	if ($GLOBALS['conn']->connect_error) 
+		{
+		    return 0;
+		}
+	else return $GLOBALS['conn'];
+}
 function deletedata()
 {
+	if(connectdb())
+		$conn=connectdb();
 	$deletequery="DELETE from formdata where email='$_POST[email]'";
-											if(mysqli_query($GLOBALS['conn'],$deletequery))
+											if(mysqli_query($conn,$deletequery))
 											{
 												echo '{"message":"Successfully deleted"}';
 											}		
+	mysqli_close($conn);
 }
 
 function fetchdata()
 	{
+	if(connectdb())
+		$conn=connectdb();
 	echo  "<html><head><script type=\"text/javascript\" src=\"script.js\"></script>
 		<link href=\"editpage.css\" rel=\"stylesheet\" type=\"text/css\">
 		</head>";
-		$data1=mysqli_query($GLOBALS['conn'],"Select * from formdata");
+		$data1=mysqli_query($conn,"Select * from formdata");
 
 		echo "<h1> Subscriber details </h1>";
 		echo "<h2 id='message'></h2>";
@@ -105,6 +115,7 @@ function fetchdata()
 			}
 			echo "</table>";
 		echo "</html>";
+	mysqli_close($conn);
 	}
 ?>
 
