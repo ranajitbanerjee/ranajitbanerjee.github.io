@@ -107,47 +107,48 @@
         };
     
   //initRaphael();
-    var circles=[{
+    
+  // console.log(twitterData.search(["KBC"]));
+  var createCircles=function(){
+     var paper=Raphael(0,0,1000,1000),
+        spacing,
+        circles=[{
             type:"circle",
             cx:200,
             cy:200,
             r:5
-        }];
-  console.log(twitterData.search(["KBC"]));
-  var createCircles=function(){
-    console.log(arguments[0]);
-    var paper = Raphael(0,0,1000,1000),
-        spacing,
-        attributes={fill:arguments[1],stroke:"none"};
-        var draw=function (tweetData){
-            for(var i=0,len=tweetData.length;i<len;i++)
-            {
-            if((circles[0].cx+circles[0].r)>900){
-                circles[0].cx=200;
-                circles[0].cy+=100;
+        }];  
+        var drawCircles=function(){
+            var tweetData=twitterData.search([arguments[0]]);
+            console.log(tweetData);
+            for(var i=0,len=tweetData.length;i<len;i++){
+            
+                if((circles[0].cx+circles[0].r)>900){
+                    circles[0].cx=200;
+                    circles[0].cy+=100;
+                }
+                var attributes={fill:arguments[1],stroke:"none",title:tweetData[i].text};
+                console.log(circles[0].cx);
+                spacing=circles[0].r;
+                circles[0].r=(tweetData[i].retweet_count/2000)*(70-2)+2;
+                circles[0].cx+=circles[0].r+spacing+5;
+               
+                paper.add(circles).attr(attributes).
+                data("value",tweetData[i].text+" cx:"+circles[0].cx+" Retweets"+tweetData[i].retweet_count).hover(function(){
+                this.attr({"title":this.data("value")});
+                });
+                    
+            
+          
             }
-            console.log(circles[0].cx);
-            spacing=circles[0].r;
-            circles[0].r=(tweetData[i].retweet_count/2000)*(70-2)+2;
-            circles[0].cx+=circles[0].r+spacing+5;
-           
-            paper.add(circles).attr(attributes).
-            data("value",tweetData[i].text+" cx:"+circles[0].cx+" Retweets"+tweetData[i].retweet_count).hover(function(){
-            this.attr({"title":this.data("value")});
-            });
-        }
-        
-        
-      
+        };
+    return drawCircles;
     };
-    var tweetDat=twitterData.search([arguments[0]]);
-    draw(tweetDat);
-    
-    
-  };
-  createCircles("KBC","aqua");
-  createCircles("film","black");
-  createCircles("india","red");
+
+  var drawCircle=createCircles();
+  drawCircle("KBC","aqua");
+  drawCircle("film","black");
+  drawCircle("india","red");
 
 
 
