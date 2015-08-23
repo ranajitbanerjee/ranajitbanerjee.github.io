@@ -1,5 +1,6 @@
 (function(){
 
+var a = performance.now();
 
  var twitterData=function(jsondata){
             var allTweets=function(jsondata){
@@ -90,11 +91,8 @@
                 tweets=newDataSet.dataSet;
             }
         return dataset;
-    }
-    twitterData.prototype.render=function forceLayout(){
-        console.log(this);
-        var tweets=this.getAllTweets(),
-            keywords=[
+    };
+    var keywords=[
                         {
                             category:["KBC"],
                             color:"coral"
@@ -119,51 +117,91 @@
                             category:["others"],
                             color:"aqua"
                         }
-                    ],
+    ];
+    twitterData.prototype.render=function forceLayout(){
+        var tweets=this.getAllTweets(),
             data=this.sort(this.prepareDataSet(keywords,tweets)),
-            dataset = {
-                nodes: data,
-                edges: [
-                ]
-            },
-            svg = d3.select("div")
+            nodes=[],
+            svg = d3.select("#bubblechart")    
+                .style({
+                    "float":"right"
+                })    
                 .append("svg")
-                .attr("width", 1700)
-                .attr("height", 900),
-            w=1700,h=600,
-            scale=d3.scale.linear()
+                .attr("width", 700)
+                .attr("height", 1500),
+            w=700,h=710,
+            scale=d3.scale.linear()         //D3 SCALE FOR SCALING VALUES IN RANGE
                     .domain([1,2000])
                     .range([2,14]),
-            force = d3.layout.force()
-                         .nodes(dataset.nodes)
-                         .size([w, h])
-                         .charge([-12])        
-                         .start(),
-            nodes = svg.selectAll("circle")
-            .data(dataset.nodes)
-            .enter()
-            .append("circle")
-            .attr("r", function(d){
-                return scale(d.retweet_count);
-            })
-            .style("fill", function(d, i) {
-                    return d.color;
-            })
-            .call(force.drag);
-            nodes.append("svg:title")
-            .text(function(d) { return d.text; });
-            console.log(data);
-        force.on("tick", function() {
+            force=d3.layout.force()         //FORCE LAYOUT ELEMENT
+                .nodes(nodes)
+                .size([w, h])
+                .charge([-12])
+                .on("tick",tick),
+            node=svg.selectAll("circle");
+        function tick(e) {                   //TICK FUNCTION
+                node.attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+            };
 
-            nodes.attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
+        var count=0,
+            simulate=function simulate(){
 
-        });
+                if(count===data.length){
+                    clearInterval(timer);
+                    return;
+                }
+                nodes.push(data[count]);
+                force.start();
+
+                node=node.data(nodes);
+                node.enter()
+                    .append("circle")
+                    .attr("r", function(d){
+                        return scale(d.retweet_count);
+                    })
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; })
+                    .style("fill", function(d, i) {
+                            return d.color;
+                    })
+                    .append("svg:title")
+                    .text(function(d) { return d.text; })
+                    .call(force.drag);
+
+                
+                count++;
+
+            };
+        console.log(data);
+        
+        var timer=setInterval(simulate,10);
     };
 
 var obj=new twitterData(tweetData);
+var p=d3.select("#category")
+.attr("width", 400)
+.attr("height", 900)
+.style({"float":"left"});
+p.selectAll("p")
+.data(keywords).enter()
+.append("p")
+.text(function(d){
+    return d.category[0];
+})
+.style({
+    "background-color": function(d){
+        return d.color;
+    },
+    "width": 180,
+    "border-radius":"5px",
+    "color":"white",
+    "font-size":"20px"
+});
 obj.render();
 
+var b = performance.now();
+console.log('It took ' + (b - a) + ' ms.');
 
 
 
