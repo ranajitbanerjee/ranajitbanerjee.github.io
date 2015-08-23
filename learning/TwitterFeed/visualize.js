@@ -1,167 +1,168 @@
 (function(){
-      var initRaphael=function(){
-        var tweetsPerMonth={"Jan":{},"Feb":{},"Mar":{},"Apr":{},"May":{},"Jun":{},"Jul":{},"Sep":{},"Oct":{},"Nov":{},"Dec":{}},
-            fetchTweetCounts=function(){
-                var i,tweets=twitterData.getTweetList(),count=tweets.length,month,obj=tweetsPerMonth;
-                for(i=0;i<count;i++){
-                    month=tweets[i].created_at.substring(4,7);
-                    if(month in obj){
-                        obj[month].count=isNaN(obj[month].count)?0:obj[month].count+1;
-                        
-                    }
-                }
-                tweetsPerMonth=obj;
-            },
-            toggle=false,
-            paper = Raphael(0,0,1000,1000),
-            rectangle=[{
-            type: "rect",
-            x: 10,
-            y: 10,
-            width: 50,
-            height: 50,
-            fill: "#fc0"
-            }],
-            x=20,
-            y=250,
-            value;
-        fetchTweetCounts();
-        console.log(tweetsPerMonth);
-        paper.add(rectangle);
-        paper.path("M 70 30 V 500"); 
-        paper.path("M 70 500 H 600");
-        for(i in tweetsPerMonth){
-            value=tweetsPerMonth[i].count;
-            console.log(i+" "+value);
-         
-            paper.rect(x+=50,500-value,40,value).
-            attr({fill:'red',cursor:'pointer'}).
-            data("i","No.of tweets "+value).hover(function(){
-            var g=this.attr("title",this.data("i"));
-            g.attr({fill:'blue'});
-            }).mouseout(function(){
-            this.attr("fill",'red');
-            });
-            paper.text(x+20,510,i);
-        }
-        /*var paper = new Raphael(document.body, 320, 200);
-        console.log(tweetsData.count);
-        // Creates circle at x = 50, y = 40, with radius 10
-        var circle = paper.circle(50, 40, 10);
-        // Sets the fill attribute of the circle to red (#f00)
-        circle.attr("fill", "#f00");
 
-        // Sets the stroke attribute of the circle to white
-        circle.attr("stroke", "#fff");*/
-      };
-      var twitterData={
-            getTweetList:function(){
-                var i,j,tweetsArr=[],tweetObj={};
-                for(i=0;i<tweetData.length;i++){
-                tweetObj.id=tweetData[i].id;
-                tweetObj.text=tweetData[i].text;
-                tweetObj.retweet_count=tweetData[i].retweet_count;
-                tweetObj.favorite_count=tweetData[i].favorite_count;
-                tweetObj.created_at=tweetData[i].created_at;
-                tweetsArr[i]=tweetObj;
-                tweetObj={};
+
+ var twitterData=function(jsondata){
+            var allTweets=function(jsondata){
+                var i,j,tweetsArr=[],tweetObj={},tweetData=jsondata,len=tweetData.length;
+                for(i=0;i<len;i++){
+                    tweetObj.id=tweetData[i].id;
+                    tweetObj.text=tweetData[i].text;
+                    tweetObj.retweet_count=tweetData[i].retweet_count;
+                    tweetObj.favorite_count=tweetData[i].favorite_count;
+                    tweetObj.created_at=tweetData[i].created_at;
+                    tweetsArr[i]=tweetObj;
+                    tweetObj={};
                 }
                 return tweetsArr;
-            },
-            getUserInfo:function(){
-                var i=0,userObj={};
-                userObj.id=tweetData[i].user.id;
-                userObj.followers_count=tweetData[i].user.followers_count;
-                userObj.location=tweetData[i].user.location;
-                userObj.profile_image=tweetData[i].user.profile_image_url_https;
-                userObj.description=tweetData[i].user.description;
-                userObj.friends_count=tweetData[i].user.friends_count;
-                userObj.created_at=tweetData[i].user.created_at;  
-                userObj.name=tweetData[i].user.name;  
-                return userObj;
-
-            },
-            search:function(){
-                var data=twitterData.getTweetList(),count=data.length,i,
-                text,
-                keywordArr=[{}],j=0,keywordsRegex="";
-                for(i=0,len=arguments[0].length;i<len;i++){
-                    keywordsRegex+=(i==len-1?"\\b"+arguments[0][i]+"\\b":"\\b"+arguments[0][i]+"\\b|");
-                }
-                for(i=0;i<count;i++){
-                    text=data[i].text;
-
-                    if(text.search(new RegExp(keywordsRegex, "i"))!==-1){
-                        
-                        keywordArr[j]={};
-                        keywordArr[j].text=text;
-                        keywordArr[j].created_at=data[i].created_at;
-                        keywordArr[j].favorite_count=data[i].favorite_count;
-                        keywordArr[j].retweet_count=data[i].retweet_count;
-                        
-                        j++;
-                    }
-                }
-                return keywordArr;
+            };
+            this.getAllTweets=function(){
+                return allTweets(jsondata);
             }
         };
-    
-  //initRaphael();
-    
-  // console.log(twitterData.search(["KBC"]));
-  var createCircles=function(){
-     var paper=Raphael(0,0,1000,1000),
-        spacing,
-        circles=[{
-            type:"circle",
-            cx:200,
-            cy:200,
-            r:5
-        }];  
-        var drawCircles=function(){
-            var tweetData=twitterData.search([arguments[0]]);
-            console.log(tweetData);
-            for(var i=0,len=tweetData.length;i<len;i++){
-            
-                if((circles[0].cx+circles[0].r)>900){
-                    circles[0].cx=200;
-                    circles[0].cy+=100;
+    twitterData.prototype.search=function(keywords,tweets){
+
+            var dataSet=tweets,
+            count=dataSet.length,
+            i,
+            words=keywords.category,
+            len=words.length,
+            text,
+            newDataSet=[],
+            keywordArr=[],
+            j=0,
+            keywordsRegex="";
+                for(i=0;i<len;i++){
+                    keywordsRegex+=(i==len-1?"\\b"+words[i]+"\\b":"\\b"+words[i]+"\\b|");
                 }
-                var attributes={fill:arguments[1],stroke:"none",title:tweetData[i].text};
-                console.log(circles[0].cx);
-                spacing=circles[0].r;
-                circles[0].r=(tweetData[i].retweet_count/2000)*(70-2)+2;
-                circles[0].cx+=circles[0].r+spacing+5;
-               
-                paper.add(circles).attr(attributes).
-                data("value",tweetData[i].text+" cx:"+circles[0].cx+" Retweets"+tweetData[i].retweet_count).hover(function(){
-                this.attr({"title":this.data("value")});
-                });
+
+           //console.log(dataSet);
+            for(i=0;i<count;i++){
+                text=dataSet[i].text;
+
+                if(words[0].toLowerCase()=="others"||text.search(new RegExp(keywordsRegex, "i"))!==-1){
                     
-            
-          
+                    keywordArr[j]={};
+                    keywordArr[j].text=text;
+                    keywordArr[j].created_at=dataSet[i].created_at;
+                    keywordArr[j].favorite_count=dataSet[i].favorite_count;
+                    keywordArr[j].retweet_count=dataSet[i].retweet_count;
+                    keywordArr[j].cateogory=words[0];
+                    keywordArr[j].color=keywords.color;
+                    j++;
+                }
+                else
+                {
+                    newDataSet.push(dataSet[i]);
+                }
+
             }
-        };
-    return drawCircles;
+            //console.log(keywordArr.length+"  "+newDataSet.length);
+            var arr={"dataSet":newDataSet,"keywordArr":keywordArr}
+            return arr;
+        
+    };
+    twitterData.prototype.sort=function(tweets,sortBy){
+        var temp,
+            arr=[],
+            i,j,xchanges;
+        for(i=0,len=tweets.length;i<len;i++){
+            xchanges=0;
+            for(j=i+1;j<len;j++){
+                if(new Date(tweets[i].created_at).getTime()>=new Date(tweets[j].created_at).getTime()) {
+                    temp=tweets[i];
+                    tweets[i]=tweets[j];
+                    tweets[j]=temp;
+                }
+            xchanges++;
+            }
+            if(xchanges==0){
+                break;
+            }
+
+        }
+        return tweets;
+    };
+    twitterData.prototype.prepareDataSet=function(keywords,tweets){
+        var newDataSet={},dataset=[];
+            for(var i=0,len=keywords.length;i<len;i++){
+                newDataSet=this.search(keywords[i],tweets);
+                dataset=dataset.concat(newDataSet.keywordArr);
+                tweets=newDataSet.dataSet;
+            }
+        return dataset;
+    }
+    twitterData.prototype.render=function forceLayout(){
+        console.log(this);
+        var tweets=this.getAllTweets(),
+            keywords=[
+                        {
+                            category:["KBC"],
+                            color:"coral"
+                        },
+                        {
+                            category:["film","trailer","movie"],
+                            color:"teal"
+                        },
+                        {
+                            category:["sports","kabaddi","football","cricket","tennis","world cup"],
+                            color:"red"
+                        },
+                        {
+                            category:["love","peace","fun","happiness","friendship"],
+                            color:"blue" 
+                        },
+                        {
+                            category:["India","country","indian"],
+                            color:"black" 
+                        },
+                        {
+                            category:["others"],
+                            color:"aqua"
+                        }
+                    ],
+            data=this.sort(this.prepareDataSet(keywords,tweets)),
+            dataset = {
+                nodes: data,
+                edges: [
+                ]
+            },
+            svg = d3.select("div")
+                .append("svg")
+                .attr("width", 1700)
+                .attr("height", 900),
+            w=1700,h=600,
+            scale=d3.scale.linear()
+                    .domain([1,2000])
+                    .range([2,14]),
+            force = d3.layout.force()
+                         .nodes(dataset.nodes)
+                         .size([w, h])
+                         .charge([-12])        
+                         .start(),
+            nodes = svg.selectAll("circle")
+            .data(dataset.nodes)
+            .enter()
+            .append("circle")
+            .attr("r", function(d){
+                return scale(d.retweet_count);
+            })
+            .style("fill", function(d, i) {
+                    return d.color;
+            })
+            .call(force.drag);
+            nodes.append("svg:title")
+            .text(function(d) { return d.text; });
+            console.log(data);
+        force.on("tick", function() {
+
+            nodes.attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+
+        });
     };
 
-  var drawCircle=createCircles();
-  drawCircle("KBC","aqua");
-  drawCircle("film","black");
-  drawCircle("india","red");
-
-
-
-
-
-
-
-
-
-
-
-
-
+var obj=new twitterData(tweetData);
+obj.render();
 
 
 
