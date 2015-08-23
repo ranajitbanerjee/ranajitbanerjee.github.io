@@ -143,7 +143,7 @@ var a = performance.now();
                 node.attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
             };
-
+        var date=d3.select("#time").style({"color":"teal","font-size":"25px","font-family":"courier"});
         var count=0,
             simulate=function simulate(){
 
@@ -155,6 +155,7 @@ var a = performance.now();
                 force.start();
 
                 node=node.data(nodes);
+                date.text(data[count].created_at.replace(/[+](0000)/g," "));
                 node.enter()
                     .append("circle")
                     .attr("r", function(d){
@@ -175,28 +176,29 @@ var a = performance.now();
             };
         console.log(data);
         
-        var timer=setInterval(simulate,10);
+        var timer=setInterval(simulate,70);
     };
 
 var obj=new twitterData(tweetData);
 var p=d3.select("#category")
-.attr("width", 400)
-.attr("height", 900)
-.style({"float":"left"});
+    .attr("width", 400)
+    .attr("height", 900)
+    .style({"float":"left"});
 p.selectAll("p")
-.data(keywords).enter()
-.append("p")
-.text(function(d){
-    return d.category[0];
-})
-.style({
+    .data(keywords).enter()
+    .append("p")
+    .text(function(d){
+        return d.category[0];
+    })
+    .style({
     "background-color": function(d){
         return d.color;
     },
     "width": 180,
     "border-radius":"5px",
     "color":"white",
-    "font-size":"20px"
+    "font-size":"20px",
+    "font-family":"Trebuchet MS"
 });
 obj.render();
 
