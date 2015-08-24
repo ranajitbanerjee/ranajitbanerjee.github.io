@@ -142,7 +142,7 @@ var a = performance.now();
         function tick(e) {                   //TICK FUNCTION
                 node.attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
-            };
+            }
         var date=d3.select("#time").style({"color":"teal","font-size":"25px","font-family":"courier"});
         var count=0,
             simulate=function simulate(){
@@ -161,14 +161,11 @@ var a = performance.now();
                     .attr("r", function(d){
                         return scale(d.retweet_count);
                     })
-                    .attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; })
                     .style("fill", function(d, i) {
                             return d.color;
                     })
                     .append("svg:title")
-                    .text(function(d) { return d.text; })
-                    .call(force.drag);
+                    .text(function(d) { return d.text; });
 
                 
                 count++;
