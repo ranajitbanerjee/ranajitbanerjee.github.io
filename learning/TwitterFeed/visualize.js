@@ -126,7 +126,7 @@ var a = performance.now();
                             color:"teal"
                         },
                         {
-                            category:"Film",
+                            category:"Sports",
                             keywords:["sports","kabaddi","football","cricket","tennis","world cup"],
                             color:"red"
                         },
