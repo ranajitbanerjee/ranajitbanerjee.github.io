@@ -94,6 +94,26 @@ var a = performance.now();
             }
         return dataset;
     };
+    twitterData.prototype.max=function(data){
+        var max=0,retweet_count;
+        for(var i=0,len=data.length;i<len;i++){
+            retweet_count=data[i].retweet_count;
+            if(max<retweet_count){
+                max=retweet_count;
+            }
+        }
+        return max;
+    };
+    twitterData.prototype.min=function(data){
+        var min=99999999999,retweet_count;
+        for(var i=0,len=data.length;i<len;i++){
+            retweet_count=data[i].retweet_count;
+            if(min>retweet_count){
+                min=retweet_count;
+            }
+        }
+        return min;
+    };
     var keywords=[
                         {
                             category:"KBC",
@@ -135,11 +155,13 @@ var a = performance.now();
                     "float":"right"
                 })    
                 .append("svg")
-                .attr("width", 700)
-                .attr("height", 1500),
-            w=700,h=710,
+                .attr("width", data.length)
+                .attr("height", data.length),
+            w=data.length,h=data.length-150,
+            min=this.min(data),
+            max=this.max(data);
             scale=d3.scale.linear()         //D3 SCALE FOR SCALING VALUES IN RANGE
-                    .domain([1,2000])
+                    .domain([min,max])
                     .range([2,14]),
             tick=function tick(e) {                   //TICK FUNCTION
                 node.attr("cx", function(d) { return d.x; })
@@ -148,7 +170,7 @@ var a = performance.now();
             force=d3.layout.force()         //FORCE LAYOUT ELEMENT
                 .nodes(nodes)
                 .size([w, h])
-                .charge([-12])
+                .charge([-11])
                 .on("tick",tick),
             node=svg.selectAll("circle"),
             date=d3.select("#time").style({"color":"teal","font-size":"25px","font-family":"courier"}),
@@ -179,7 +201,7 @@ var a = performance.now();
                 count++;
 
             },
-            timer=setInterval(simulate,70);
+            timer=setInterval(simulate,40);
     };
 
 var p=d3.select("#category")
