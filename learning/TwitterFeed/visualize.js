@@ -18,7 +18,7 @@ var a = performance.now();
             };
             this.getAllTweets=function(){
                 return allTweets(jsondata);
-            }
+            };
         };
     twitterData.prototype.search=function(keywords,tweets){
 
@@ -58,7 +58,7 @@ var a = performance.now();
 
             }
             //console.log(keywordArr.length+"  "+newDataSet.length);
-            var arr={"dataSet":newDataSet,"keywordArr":keywordArr}
+            var arr={"dataSet":newDataSet,"keywordArr":keywordArr};
             return arr;
         
     };
@@ -76,7 +76,7 @@ var a = performance.now();
                 }
             xchanges++;
             }
-            if(xchanges==0){
+            if(xchanges===0){
                 break;
             }
 
@@ -133,18 +133,18 @@ var a = performance.now();
             scale=d3.scale.linear()         //D3 SCALE FOR SCALING VALUES IN RANGE
                     .domain([1,2000])
                     .range([2,14]),
+            tick=function tick(e) {                   //TICK FUNCTION
+                node.attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+            },
             force=d3.layout.force()         //FORCE LAYOUT ELEMENT
                 .nodes(nodes)
                 .size([w, h])
                 .charge([-12])
                 .on("tick",tick),
-            node=svg.selectAll("circle");
-        function tick(e) {                   //TICK FUNCTION
-                node.attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; });
-            }
-        var date=d3.select("#time").style({"color":"teal","font-size":"25px","font-family":"courier"});
-        var count=0,
+            node=svg.selectAll("circle"),
+            date=d3.select("#time").style({"color":"teal","font-size":"25px","font-family":"courier"}),
+            count=0,
             simulate=function simulate(){
 
                 if(count===data.length){
@@ -170,13 +170,10 @@ var a = performance.now();
                 
                 count++;
 
-            };
-        console.log(data);
-        
-        var timer=setInterval(simulate,70);
+            },
+            timer=setInterval(simulate,70);
     };
 
-var obj=new twitterData(tweetData);
 var p=d3.select("#category")
     .attr("width", 400)
     .attr("height", 900)
@@ -197,13 +194,11 @@ p.selectAll("p")
     "font-size":"20px",
     "font-family":"Trebuchet MS"
 });
+
+var obj=new twitterData(tweetData);
 obj.render();
 
 var b = performance.now();
 console.log('It took ' + (b - a) + ' ms.');
-
-
-
-
 
 })();
