@@ -1,7 +1,7 @@
 (function(){
 
 var a = performance.now();
-
+ //twitterData is a funciton which receives json data and parses it
  var twitterData=function(jsondata){
             var allTweets=function(jsondata){
                 var i,j,tweetsArr=[],tweetObj={},tweetData=jsondata,len=tweetData.length;
@@ -16,31 +16,35 @@ var a = performance.now();
                 }
                 return tweetsArr;
             };
+            //function for getting all the tweets
             this.getAllTweets=function(){
                 return allTweets(jsondata);
             };
         };
+    //this function searches for tweets which contains those keywords and returns an object which contains the 
+    //result data set and a new data set.New data set does not contain the tweets which is in result data set.
     twitterData.prototype.search=function(keywords,tweets){
-
+            console.log(keywords.keywords.length);
             var dataSet=tweets,
             count=dataSet.length,
             i,
-            words=keywords.category,
+            words=keywords.keywords,
             len=words.length,
             text,
             newDataSet=[],
             keywordArr=[],
             j=0,
             keywordsRegex="";
+            //Forming a Regular expression pattern from keywords
                 for(i=0;i<len;i++){
                     keywordsRegex+=(i==len-1?"\\b"+words[i]+"\\b":"\\b"+words[i]+"\\b|");
                 }
 
-           //console.log(dataSet);
+            //Loop through the data set and search tweets containing any of those keywords
             for(i=0;i<count;i++){
                 text=dataSet[i].text;
 
-                if(words[0].toLowerCase()=="others"||text.search(new RegExp(keywordsRegex, "i"))!==-1){
+                if(keywords.category.toLowerCase()=="others"||text.search(new RegExp(keywordsRegex, "i"))!==-1){
                     
                     keywordArr[j]={};
                     keywordArr[j].text=text;
@@ -51,8 +55,7 @@ var a = performance.now();
                     keywordArr[j].color=keywords.color;
                     j++;
                 }
-                else
-                {
+                else{
                     newDataSet.push(dataSet[i]);
                 }
 
@@ -86,6 +89,7 @@ var a = performance.now();
     twitterData.prototype.prepareDataSet=function(keywords,tweets){
         var newDataSet={},dataset=[];
             for(var i=0,len=keywords.length;i<len;i++){
+                console.log(keywords[i]);
                 newDataSet=this.search(keywords[i],tweets);
                 dataset=dataset.concat(newDataSet.keywordArr);
                 tweets=newDataSet.dataSet;
@@ -94,27 +98,33 @@ var a = performance.now();
     };
     var keywords=[
                         {
-                            category:["KBC"],
+                            category:"KBC",
+                            keywords:["KBC"],
                             color:"coral"
                         },
                         {
-                            category:["film","trailer","movie"],
+                            category:"Film",
+                            keywords:["film","trailer","movie"],
                             color:"teal"
                         },
                         {
-                            category:["sports","kabaddi","football","cricket","tennis","world cup"],
+                            category:"Film",
+                            keywords:["sports","kabaddi","football","cricket","tennis","world cup"],
                             color:"red"
                         },
                         {
-                            category:["love","peace","fun","happiness","friendship"],
+                            category:"Love",
+                            keywords:["love","peace","fun","happiness","friendship"],
                             color:"blue" 
                         },
                         {
-                            category:["India","country","indian"],
+                            category:"India",
+                            keywords:["India","country","indian"],
                             color:"black" 
                         },
                         {
-                            category:["others"],
+                            category:"others",
+                            keywords:[],
                             color:"aqua"
                         }
     ];
