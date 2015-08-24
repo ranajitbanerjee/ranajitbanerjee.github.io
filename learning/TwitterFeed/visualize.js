@@ -24,7 +24,6 @@ var a = performance.now();
     //this function searches for tweets which contains those keywords and returns an object which contains the 
     //result data set and a new data set.New data set does not contain the tweets which is in result data set.
     twitterData.prototype.search=function(keywords,tweets){
-            console.log(keywords.keywords.length);
             var dataSet=tweets,
             count=dataSet.length,
             i,
@@ -89,7 +88,6 @@ var a = performance.now();
     twitterData.prototype.prepareDataSet=function(keywords,tweets){
         var newDataSet={},dataset=[];
             for(var i=0,len=keywords.length;i<len;i++){
-                console.log(keywords[i]);
                 newDataSet=this.search(keywords[i],tweets);
                 dataset=dataset.concat(newDataSet.keywordArr);
                 tweets=newDataSet.dataSet;
@@ -192,7 +190,7 @@ p.selectAll("p")
     .data(keywords).enter()
     .append("p")
     .text(function(d){
-        return d.category[0];
+        return d.category;
     })
     .style({
     "background-color": function(d){
