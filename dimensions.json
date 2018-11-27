@@ -1,0 +1,21 @@
+[
+    {
+        "name": "date",
+        "type": "dimension",
+        "subtype": "temporal",
+        "format": "%Y-%m-%d"
+    },
+    {
+        "name": "value",
+        "type": "measure",
+        "defAggFn": "avg"
+    },
+    {
+        "name": "dim",
+        "type": "dimension"
+    },
+    {
+        "name": "unit",
+        "type": "dimension"
+    }
+]

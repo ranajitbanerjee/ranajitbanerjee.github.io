@@ -1,0 +1,47 @@
+[
+    {
+        "value": "Global PMI"
+    },
+    {
+        "value": "China Manufacturing PMI"
+    },
+    {
+        "value": "China PPI",
+        "unit": "%"
+    },
+    {
+        "value": "Japan Inflation",
+        "unit": "%"
+    },
+    {
+        "value": "South Korea Exports",
+        "unit": "%"
+    },
+    {
+        "value": "U.S. Employment",
+        "unit": "K"
+    },
+    {
+        "value": "U.S. Consumer Spending",
+        "unit": "%"
+    },
+    {
+        "value": "U.S. Personal Consumption Expenditures",
+        "unit": "%"
+    },
+    {
+        "value": "Brazil GDP",
+        "unit": "%"
+    },
+    {
+        "value": "Chile Copper Exports",
+        "unit": "B"
+    },
+    {
+        "value": "Euro-Area Inflation",
+        "unit": "%"
+    },
+    {
+        "value": "German Ifo"
+    }
+]
