@@ -1,0 +1,48 @@
+[
+    {
+        "name": "time",
+        "type": "dimension",
+        "subtype": "temporal",
+        "format": "%Y-%m-%d %M:%S"
+    },
+    {
+        "name": "impressions",
+        "type": "measure"
+    },
+    {
+        "name": "engagements",
+        "type": "measure"
+    },
+    {
+        "name": "retweets",
+        "type": "measure"
+    },
+    {
+        "name": "favorites",
+        "type": "measure"
+    },
+    {
+        "name": "user profile clicks",
+        "type": "measure"
+    },
+    {
+        "name": "url clicks",
+        "type": "measure"
+    },
+    {
+        "name": "hashtag clicks",
+        "type": "measure"
+    },
+    {
+        "name": "detail expands",
+        "type": "measure"
+    },
+    {
+        "name": "permalink clicks",
+        "type": "measure"
+    },
+    {
+        "name": "follows",
+        "type": "measure"
+    }
+]
