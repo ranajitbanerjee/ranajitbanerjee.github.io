@@ -1,0 +1,29 @@
+[{
+  "name": "Market",
+  "type": "dimension"
+},
+{
+  "name": "Product",
+  "type": "dimension"
+},
+{
+  "name": "Product Type",
+  "type": "dimension"
+},
+
+{
+  "name": "Revenue",
+  "type": "measure"
+},
+{
+  "name": "Expense",
+  "type": "measure"
+},
+{
+  "name": "Profit",
+  "type": "measure"
+},
+{
+  "name": "Order Count",
+  "type": "measure"
+}]

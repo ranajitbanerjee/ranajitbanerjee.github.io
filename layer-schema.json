@@ -1,0 +1,23 @@
+[
+    {
+        "name": "time",
+        "type": "dimension",
+        "subtype": "temporal",
+        "format": "%Y"
+    },
+    {
+        "name": "minDays",
+        "type": "measure",
+        "defAggFn": "avg"
+    },
+    {
+        "name": "days at or above 32 deg",
+        "type": "measure",
+        "defAggFn": "avg"
+    },
+    {
+        "name": "maxDays",
+        "type": "measure",
+        "defAggFn": "avg"
+    }
+]
